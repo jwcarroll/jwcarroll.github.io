@@ -1,0 +1,353 @@
+/*
+Theme Name: Von
+Theme Description: Minimalist Blog Theme
+Version: 1.0
+Author: Paul Laros
+Author URI: http://paullaros.nl/
+*/
+
+html {
+	overflow-y: scroll;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+  background: #F2F2F2;
+  font-size: 1.3em;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Varela Round', sans-serif;
+}
+
+p {
+  color: #707070;
+}
+
+a, a:focus, a:hover {
+	color: #235A9F;
+	outline: none;
+	text-decoration: none;
+}
+
+.img-responsive {
+  margin: 0 0 1em;
+}
+
+.btn {
+  border-radius: 2px;
+}
+
+/* PACE 
+-------------------------------------------------------- */
+.pace .pace-progress {
+  background: #29d;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  height: 2px;
+  -webkit-transition: width 1s;
+  -moz-transition: width 1s;
+  -o-transition: width 1s;
+  transition: width 1s;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+/* Primary 
+-------------------------------------------------------- */
+#primary {
+  margin: 0 auto;
+}
+
+.header {
+  height: 50px;
+}
+
+/*.site-title {
+  font-size: 4em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+
+  display: block;
+  background: #235A9F;
+
+}
+.site-title a {
+  color: #fff;
+}*/
+
+.site-title,
+.site-description {
+  margin: 0;
+}
+
+/* Content */
+.content {
+  margin: 2.8em auto;
+  max-width: 860px;
+}
+
+.content-head {
+  color: #aaa;
+  border-bottom: 1px solid #eee;
+  padding: 0.4em 0;
+  font-size: 1.3em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Post */
+.post, .comments {
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0px 1px 1px #aaa;
+  padding: 3em;
+  margin: 2em auto;
+}
+
+.entry-title {
+  color: #222;
+  font-size: 2.2em;
+  margin: 0 0 0.2em;
+}
+
+.entry-title a {
+  color: #222;
+}
+
+.entry-avatar {
+  border-radius: 50%;
+  float: right;
+  margin-left: 1em;
+}
+
+.entry-description {
+  color: #344151;
+  font-family: "Source Sans Pro",sans-serif;
+  font-size: 1.4em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.6em;
+}
+
+.entry-description h1,.entry-description h2, .entry-description h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.entry-meta {
+  color: #999;
+  font-size: 90%;
+  margin: 0 0 1.8em;
+}
+
+/* Footer */
+.footer {
+  margin: 0 auto;
+  padding: 1em;
+  border-top: 1px solid #DBDBDB;
+}
+
+.footer p {
+  color: #aaa;
+  font-size: 90%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.footer h1, .footer h2, .footer h3, .footer h4, .footer h5, .footer h6{
+    color: #aaa;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.post .footer{
+    margin-top:20px;
+    border:none;
+}
+
+/* Secondary 
+-------------------------------------------------------- */
+#secondary {
+  display: none;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #1C171E;
+	height: 100%;
+	position: fixed;
+  right: 0;
+  overflow-y: auto;
+}
+
+.sidebar aside {
+  color: #C1C0C0;
+  margin: 2em 1em;
+}
+
+.sidebar aside p {
+  font-size: 1.1em;
+}
+
+.sidebar aside h4 {
+  color: #fff;
+}
+
+.sidebar aside div {
+  margin: 2em 0;
+}
+
+.sidebar ul {
+	margin: 0.6em 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sidebar ul li {
+	display: inline-block;
+}
+
+.sidebar ul li a {
+	font-size: 0.8em;
+}
+
+/* Socials 
+-------------------------------------------------------- */
+.socials-sidebar a {
+  background-color: #000;
+  border-color: #000;
+  margin: 3px;
+  width: 38px;
+}
+
+.socials-footer {
+  text-align: center;
+}
+
+.socials-footer a {
+  display: inline-block;
+  background-color: #D3D3D3;
+  border-color: #D3D3D3;
+  margin: 4px;
+  width: 38px;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+
+	#secondary {
+		height: auto;
+		position: relative;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+	}
+
+}
+
+/* Bootstrap Overrides */
+.btn-tag {
+  color: #fff;
+  border-color: #fff;
+}
+.btn-tag:hover,
+.btn-tag:focus,
+.btn-tag:active,
+.btn-tag.active,
+.open .dropdown-toggle.btn-tag {
+  color: #fff;
+  background-color: #d2322d;
+  border-color: #ac2925;
+}
+.btn-tag:active,
+.btn-tag.active,
+.open .dropdown-toggle.btn-tag {
+  background-image: none;
+}
+.btn-tag.disabled,
+.btn-tag[disabled],
+fieldset[disabled] .btn-tag,
+.btn-tag.disabled:hover,
+.btn-tag[disabled]:hover,
+fieldset[disabled] .btn-tag:hover,
+.btn-tag.disabled:focus,
+.btn-tag[disabled]:focus,
+fieldset[disabled] .btn-tag:focus,
+.btn-tag.disabled:active,
+.btn-tag[disabled]:active,
+fieldset[disabled] .btn-tag:active,
+.btn-tag.disabled.active,
+.btn-tag[disabled].active,
+fieldset[disabled] .btn-tag.active {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn-tag .badge {
+  color: #d9534f;
+  background-color: #fff;
+}
+
+/* Custom Styles */
+a.tag {
+   margin-left:5px;
+   margin-bottom:5px;
+}
+
+.tag-title{
+   color:#d2322d;
+   font-weight:bold;
+}
+
+ul.archive-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.archive-list li:before {    
+   font-family: 'FontAwesome';
+   content: '\f121';
+   margin-right:5px;
+   color: #aaa;
+}
+
+/* Pager overrides for Twitter Bootstrap */
+.pager {
+   margin: 20px 0 0 0;
+}
+
+.pager li>a, .pager li>span {
+   padding: 2px 14px;
+   background-color: transparent;
+   border: 1px solid transparent;
+   border-radius: 2px;
+}
+
+.pager .disabled>a, .pager .disabled>a:hover, .pager .disabled>a:focus, .pager .disabled>span {
+   color: #999;
+   background-color: transparent;
+   cursor: not-allowed;
+}
+
+/* Pre overrides for Twitter Bootstrap */
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 20px 0;
+    font-size: inherit;
+    line-height: inherit;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #FAFAFA;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+}

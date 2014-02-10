@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <title>Prototypal Inheritance in C# - Techno Fattie</title>
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C400italic%2C700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-social.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/pygments/vs.css" rel="stylesheet">
+
+    <!-- Loading bar -->
+    <script src="/js/pace.min.js"></script>
+
+    <!-- HTML5 shiv for IE8 support -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div id="secondary" class="col-sm-3 sidebar" style="display: none;">
+      <aside>
+
+        <div class="about">
+          <h4>About Josh Carroll</h4>
+          <p>Computer geek, husband, father, theologian. I rock out web sites. I work for <a href="http://www.wintellect.com/">Wintellect</a>.</p>
+        </div>
+
+        <div class="socialmedia">
+          <h4>Connect</h4>
+          <div class="socials-sidebar">
+          
+            <a class="btn btn-twitter" href="https://twitter.com/jwcarroll" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          
+            <a class="btn btn-linkedin" href="https://www.linkedin.com/in/jwcarroll" title="LinkedIn">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          
+            <a class="btn btn-google-plus" href="https://www.google.com/+JoshCarrollW" title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          
+            <a class="btn btn-github" href="https://github.com/jwcarroll" title="GitHub">
+              <i class="fa fa-github"></i>
+            </a>
+          
+          </div> <!-- /.socials-sidebar -->
+        </div>
+        
+        <div class="tags">
+          <h4>Tags</h4>
+          <ul>
+          
+            <li>
+              <a href="/tags/f%23.html" class="tag btn btn-tag btn-sm">f#</a>
+            </li>
+          
+            <li>
+              <a href="/tags/.net.html" class="tag btn btn-tag btn-sm">.net</a>
+            </li>
+          
+            <li>
+              <a href="/tags/c%23.html" class="tag btn btn-tag btn-sm">c#</a>
+            </li>
+          
+            <li>
+              <a href="/tags/data-sets.html" class="tag btn btn-tag btn-sm">data-sets</a>
+            </li>
+          
+            <li>
+              <a href="/tags/commentary.html" class="tag btn btn-tag btn-sm">commentary</a>
+            </li>
+          
+            <li>
+              <a href="/tags/qa.html" class="tag btn btn-tag btn-sm">qa</a>
+            </li>
+          
+            <li>
+              <a href="/tags/tdd.html" class="tag btn btn-tag btn-sm">tdd</a>
+            </li>
+          
+            <li>
+              <a href="/tags/unit-testing.html" class="tag btn btn-tag btn-sm">unit-testing</a>
+            </li>
+          
+            <li>
+              <a href="/tags/security.html" class="tag btn btn-tag btn-sm">security</a>
+            </li>
+          
+            <li>
+              <a href="/tags/wpf.html" class="tag btn btn-tag btn-sm">wpf</a>
+            </li>
+          
+            <li>
+              <a href="/tags/validation.html" class="tag btn btn-tag btn-sm">validation</a>
+            </li>
+          
+            <li>
+              <a href="/tags/programming.html" class="tag btn btn-tag btn-sm">programming</a>
+            </li>
+          
+            <li>
+              <a href="/tags/sarcasm.html" class="tag btn btn-tag btn-sm">sarcasm</a>
+            </li>
+          
+            <li>
+              <a href="/tags/stackoverflow.html" class="tag btn btn-tag btn-sm">stackoverflow</a>
+            </li>
+          
+            <li>
+              <a href="/tags/dynamic.html" class="tag btn btn-tag btn-sm">dynamic</a>
+            </li>
+          
+            <li>
+              <a href="/tags/powershell.html" class="tag btn btn-tag btn-sm">powershell</a>
+            </li>
+          
+            <li>
+              <a href="/tags/angular.html" class="tag btn btn-tag btn-sm">angular</a>
+            </li>
+          
+            <li>
+              <a href="/tags/dependency-injection.html" class="tag btn btn-tag btn-sm">dependency-injection</a>
+            </li>
+          
+            <li>
+              <a href="/tags/humor.html" class="tag btn btn-tag btn-sm">humor</a>
+            </li>
+          
+          </ul>
+        </div>
+        
+        <div class="sidebar-links">
+         <h4><a href="/archives/">Archives</a></h4>
+        </div>
+        
+        
+        <div>
+            <h4>You Might Also Like:</h4>
+            
+            <h5>
+               <a href="/2011/09/23/solving-ayende%27s-tax-woes.html">Solving Ayende's Tax Woes</a>
+            </h5>
+            
+            <h5>
+               <a href="/2011/02/11/wpf-fancy-winforms.html">WPF != Fancy Winforms</a>
+            </h5>
+            
+            <h5>
+               <a href="/2010/06/25/extending-moq-using-extension-methods.html">Extending Moq Using Extension Methods</a>
+            </h5>
+            
+            <h5>
+               <a href="/2011/10/05/recursive-validation-using-dataannotations.html">Recursive Validation Using DataAnnotations</a>
+            </h5>
+            
+            <h5>
+               <a href="/2011/02/09/unit-testing-and-declarative-security-part-1.html">Unit Testing and Declarative Security, Part 1</a>
+            </h5>
+            
+        </div>
+        
+        
+      </aside>
+    </div> <!-- /#secondary -->
+
+    <div id="primary" class="col-sm-12">
+      <div class="content">
+        
+        <header class="header">
+          <hgroup class="pull-left">
+            <h1 class="site-title">
+              <a rel="home" title="Techno Fattie" href="/">
+                <i class="fa fa-code"></i> Techno Fattie
+              </a>
+            </h1>            
+          </hgroup>
+          <div id="togglesidebar" class="btn btn-primary pull-right">
+            <i class="fa fa-bars"></i>
+          </div>
+        </header> <!-- /header -->
+
+        
+
+<section class="post">
+ <header class="entry-header">
+   <img class="entry-avatar" alt="Josh Carroll" height="52" width="52" src="http://www.gravatar.com/avatar/213ff080fa03648f0b71e4f4658a8046.png?s=52">
+   <h1 class="entry-title"><a href="/2012/08/31/prototypal-inheritance-in-c%23.html">Prototypal Inheritance in C#</a></h1>
+   <p class="entry-meta">
+     Posted on <a class="entry-date" href="/archives/#august-2012">31 August 2012</a> | 
+     By <a class="entry-author" href="/about/">Josh Carroll</a>
+     
+     | Tags 
+     
+     <a href="/tags/c%23.html" class="btn btn-default btn-xs">c#</a> 
+     
+     <a href="/tags/dynamic.html" class="btn btn-default btn-xs">dynamic</a> 
+     
+     <a href="/tags/.net.html" class="btn btn-default btn-xs">.net</a> 
+     
+     
+   </p>
+ </header>
+ <div class="entry-description">
+   The other day an interesting question was posed on Stackoverflow.     Sumarizing:  <br /><blockquote>"How can I add methods to a type dynamically at runtime and have them be       available to all other instances of that type?"     </blockquote>That is certainly an interesting question. Of course this is     similar to how <a href="http://javascript.crockford.com/prototypal.html">JavaScript works via the prototype property</a> that all objects     have. So I set out to see how easy it would be to simulate prototypal     inheritance in C# using the new <a href="http://msdn.microsoft.com/en-us/library/dd233052.aspx">Dynamic&nbsp;Language&nbsp;Runtime</a> features     introduced in C# 4.0.<br /><br /><i>Now let me preface this by saying this solution is an     answer in search of a question. That is, there is no particular problem I     can immediately think of that this solves. It is a decent demonstration of     the dynamic capabilities available to you in C#, but if you find yourself     needing this kind of behavior, you might be a closet hipster.</i><br /><br />What would     such an implementation look like? Imagine the following class     structure:  <br /><br /><pre><br /><code>public class Foo {}<br />public class Bar: Foo {}<br /></code><br /></pre><br />And now we would like to be able to dynamically define methods for Foo and Bar at runtime like so.<br /><br /><pre><br /><code>var foo1 = new Foo();<br />var foo2 = new Foo();<br /><br />Foo.Add = new Func&lt;Int32,Int32,Int32&gt;((a, b) =&gt;; a + b);<br /><br />var result1 = foo1.Add(5, 5); // result1 == 10<br />var result2 = foo2.Add(10, 5); // result2 == 15<br /></code><br /></pre><br />As it is written, this is impossible since it won't even compile. However, if we leverage the DLR and the <a href="http://msdn.microsoft.com/en-us/library/dd264736.aspx">dynamic keyword</a>, then we can begin to make some magic happen. <a href="http://msdn.microsoft.com/en-us/library/system.dynamic.expandoobject.aspx">ExpandoObject </a>is certainly an attractive new addition to .Net, as it allows us to dynamically add members at runtime, but they are local to that instance only. So for our purposes we are going to have to turn to the low level <a href="http://msdn.microsoft.com/en-us/library/system.dynamic.dynamicobject.aspx">DynamicObject</a>. DynamicObject gives us hooks into the new dynamic features of the runtime, but we are forced to write all the necessary plumbing to get the functionality we want. At a minimum we need to be able to:<br /><ul><li>Add new properties       </li><li>Add new methods       </li><li>Retrieve the value of dynamic properties       </li><li>Invoke dynamically added methods       </li></ul>This turns out to be pretty easy by overriding just three methods from     DynamicObject. <a href="http://msdn.microsoft.com/en-us/library/system.dynamic.dynamicobject.trysetmember.aspx">TrySetMember</a>, <a href="http://msdn.microsoft.com/en-us/library/system.dynamic.dynamicobject.trygetmember">TryGetMember</a>&nbsp;and <a href="http://msdn.microsoft.com/en-us/library/system.dynamic.dynamicobject.tryinvokemember">TryInvokeMember</a>.<br /><br /><pre><code>public class ProtoObject : DynamicObject<br />{<br /> private Dictionary&lt;String,Object&gt; _members = new Dictionary&lt;String,Object&gt;();<br /><br /> public override bool TryInvokeMember(InvokeMemberBinder binder, object[] args, out object result)<br /> {<br />  Object member = null;<br />  result = null;<br /><br />  //Check to see if we have a member of this name<br />  var success = _members.TryGetValue(binder.Name, out member);<br /><br />  //Check to make sure it is a delegate that can be invoked<br />  if (success &amp;&amp; member is Delegate)<br />  {<br />   //Execute the member with the passed in arguments and assing the result<br />   result = ((Delegate)member).DynamicInvoke(args);<br />  }<br /><br />  return success;<br /> }<br /><br /> public override bool TryGetMember(GetMemberBinder binder, out object result)<br /> {<br />  //Attempt to get the saved value with specified name<br />  var success = _members.TryGetValue(binder.Name, out result);<br /><br />  return success;<br /> }<br /> <br /> public override bool TrySetMember(SetMemberBinder binder, object value)<br /> {<br />  //Add the new member name and value to our dictionary<br />  // or override the existing value<br />  if (_members.ContainsKey(binder.Name))<br />   _members[binder.Name] = value;<br />  else<br />   _members.Add(binder.Name, value);<br /><br />  return true;<br /> }<br />}<br /></code><br /></pre><br />Now we have a custom object that will act similar to how ExpandoObject       works. However, <b>we still haven't solved the issue of inheriting members       across all types</b>. What we need is a shared collection of members that are       specific to that type.<br />&nbsp;     <br />I've chosen a static Dictionary&lt;Type,ExpandoObject&gt; for this       solution. Obviously we want to use Type as a key since the members should       be specific to a type, and ExpandoObject already gives us all the       functionality we need to store a collection of arbitrary properties and       methods.     <br /><br />In order to make this work properly, we need to initialize the Dictionary       with each new type in the&nbsp;inheritance&nbsp;chain, and provide a humane way of       adding new members to a specific type. The constructor can be used to       ensure that new types are added to the Dictionary, and by getting       creating with the dynamic keyword, we can add a Prototype property that       will give each type access to it's corresponding ExpandoObject.     <br /><br /><pre><code>private static readonly Dictionary&lt;Type,ExpandoObject&gt; _prototypes = new Dictionary&lt;Type,ExpandoObject&gt;();<br /><br />public ProtoObject()<br />{<br /> if (Prototype == null)<br /> {<br />  _prototypes.Add(GetType(), new ExpandoObject());<br /> }<br />}<br /><br />public dynamic Prototype<br />{<br /> get<br /> {<br />  if (_prototypes.ContainsKey(GetType()))<br />   return _prototypes[GetType()];<br />  else<br />   return null;<br /> }<br />}<br /></code><br /></pre><br />Finally, when a request for a member is made, we need to first check to       see if there is one defined on the instance. If we can't find one, then       we can begin looking for a matching member in the prototype object,       walking the&nbsp;inheritance&nbsp;chain until we find what we are looking for.     <br /><br />Since finding an appropriate prototype member by walking the inheritance       chain is recursive in nature, a helper method can be added to make this       easier. While TrySetMember remains unchanged, TryInvokeMember and       TryGetMember need to change slightly to&nbsp;accommodate&nbsp;the new       functionality, but not by much.     <br /><br /><pre><code>public override bool TryInvokeMember(InvokeMemberBinder binder, object[] args, out object result)<br />{<br /> Object member = null;<br /> result = null;<br /><br /> var success _members.TryGetValue(binder.Name, out member);<br /><br /> if (success &amp;&amp; member is Delegate)<br /> {<br />  result = ((Delegate)member).DynamicInvoke(args);<br /> }<br /><br /> if (!success)<br /> {<br />  member = FindPrototypeMember(binder.Name, GetType());<br /><br />  if (member is Delegate)<br />  {<br />   result = ((Delegate)member).DynamicInvoke(args);<br />   success = true;<br />  }<br /> }<br /><br /> return success;<br />}<br /><br />public override bool TryGetMember(GetMemberBinder binder, out object result)<br />{<br /> var success = _members.TryGetValue(binder.Name, out result);<br /><br /> if (!success)<br /> {<br />  var member = FindPrototypeMember(binder.Name, GetType());<br /><br />  if (member != null)<br />  {<br />   result = member;<br />   success = true;<br />  }<br /> }<br /><br /> return success;<br />}<br /><br />//Walk the inheritance chain using recursion to find a suitable<br />// prototype member<br />private object FindPrototypeMember(string memberName, Type type)<br />{<br /> if (String.IsNullOrWhiteSpace(memberName) || type == null) return null;<br /><br /> if (!_prototypes.ContainsKey(type)) return null;<br /><br /> var prototype = _prototypes[type] as IDictionary;<br /><br /> if (prototype.ContainsKey(memberName))<br />  return prototype[memberName];<br /> else<br />  return FindPrototypeMember(memberName, type.BaseType);<br />}<br /></code><br /></pre><br />Putting this all together allows us to inherit from this object and       dynamically add members and properties at runtime that will be available       to all instances of that type. In other words, given this class       structure:     <br /><br /><pre><code>public class Foo: ProtoObject {}<br />public class Bar: Foo {}<br /></code><br /></pre><br />This code is totally valid:     <br /><br /><pre><code>dynamic myFoo = new Foo();<br />dynamic yourFoo = new Foo();<br />dynamic myBar = new Bar();<br /><br />myFoo.Prototype.Name = "Josh";<br />myFoo.Prototype.SayHello = new Action(s =&gt; Console.WriteLine("Hello, " + s));<br /><br />yourFoo.SayHello(myBar.Name); // 'Hello, Josh'<br /></code><br /></pre><br />Again, I can't think of any practical use for this off the top of my       head, but it is interesting to see just how much flexibility you can       squeeze out of C# with very little code.&nbsp;     <br /><br />For those who are interested <a href="https://github.com/Wintellect/ProtoSharp">a more robust version of this code is      available on GitHub</a>. The unit tests are the best documentation of the       additional features, mainly:     <br /><ul><li>Ability to check for "undefined" members by returning a special         value instead of throwing an exception         </li><li>Ability to access the current instance from within dynamically         added methods.         </li><li>Allows original exception with full stack trace to propogate         instead of a RuntimeBinderException.         </li></ul>
+
+ </div>
+ 
+
+<div class="footer">
+    <h4>Share This Post</h4>
+
+    <div class="socials-footer">
+        <a class="btn btn-twitter" href="http://twitter.com/share?text=Prototypal Inheritance in C# by @jwcarroll&url=http://www.technofattie.com/2012/08/31/prototypal-inheritance-in-c%23.html"
+           onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.technofattie.com/2012/08/31/prototypal-inheritance-in-c%23.html"
+           onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+        </a>
+        <a class="btn btn-google-plus" href="https://plus.google.com/share?url=http://www.technofattie.com/2012/08/31/prototypal-inheritance-in-c%23.html"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+            <i class="fa fa-google-plus"></i>
+        </a>
+    </div>
+</div>
+</section>
+
+<div class="comments">
+ <div id="disqus_thread"></div>
+ <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'technofattie'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+ <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+        <footer class="footer">
+          <p>© <a href="/about/">Josh Carroll</a> 2014. All right reserved.</p>
+          <div class="socials-footer">
+          
+            <a class="btn btn-twitter" href="https://twitter.com/jwcarroll" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          
+            <a class="btn btn-linkedin" href="https://www.linkedin.com/in/jwcarroll" title="LinkedIn">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          
+            <a class="btn btn-google-plus" href="https://www.google.com/+JoshCarrollW" title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          
+            <a class="btn btn-github" href="https://github.com/jwcarroll" title="GitHub">
+              <i class="fa fa-github"></i>
+            </a>
+          
+          </div> <!-- /.socials-footer -->
+        </footer> <!-- /footer -->
+
+      </div>
+    </div> <!-- /#primary -->
+
+    <!-- Scripts -->
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/custom.js"></script>
+
+  </body>
+</html>
