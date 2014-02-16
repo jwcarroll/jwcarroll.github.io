@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <title>Angular Powered Text Transformations - Part 1 - Techno Fattie</title>
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C400italic%2C700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-social.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/pygments/syntax.css" rel="stylesheet">
+
+    <!-- Loading bar -->
+    <script src="/js/pace.min.js"></script>
+
+    <!-- HTML5 shiv for IE8 support -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-47962022-1', 'technofattie.com');
+    ga('send', 'pageview');
+
+</script>
+    
+  </head>
+
+  <body>
+
+    <div id="secondary" class="col-sm-3 sidebar" style="display: none;">
+      <aside>
+
+        <div class="about">
+          <h4>About Josh Carroll</h4>
+          <p>Computer geek, husband, father, theologian. I rock out web sites. I work for <a href="http://www.wintellect.com/">Wintellect</a>.</p>
+        </div>
+
+        <div class="socialmedia">
+          <h4>Connect</h4>
+          <div class="socials-sidebar">
+          
+            <a class="btn btn-twitter" href="https://twitter.com/jwcarroll" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          
+            <a class="btn btn-linkedin" href="https://www.linkedin.com/in/jwcarroll" title="LinkedIn">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          
+            <a class="btn btn-google-plus" href="https://www.google.com/+JoshCarrollW" title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          
+            <a class="btn btn-github" href="https://github.com/jwcarroll" title="GitHub">
+              <i class="fa fa-github"></i>
+            </a>
+          
+          </div> <!-- /.socials-sidebar -->
+        </div>
+        
+        <div class="tags">
+          <h4>Tags</h4>
+          <ul>
+          
+            <li>
+              <a href="/tags/f%23.html" class="tag btn btn-tag btn-sm">f#</a>
+            </li>
+          
+            <li>
+              <a href="/tags/dot-net.html" class="tag btn btn-tag btn-sm">dot-net</a>
+            </li>
+          
+            <li>
+              <a href="/tags/c%23.html" class="tag btn btn-tag btn-sm">c#</a>
+            </li>
+          
+            <li>
+              <a href="/tags/data-sets.html" class="tag btn btn-tag btn-sm">data-sets</a>
+            </li>
+          
+            <li>
+              <a href="/tags/commentary.html" class="tag btn btn-tag btn-sm">commentary</a>
+            </li>
+          
+            <li>
+              <a href="/tags/qa.html" class="tag btn btn-tag btn-sm">qa</a>
+            </li>
+          
+            <li>
+              <a href="/tags/tdd.html" class="tag btn btn-tag btn-sm">tdd</a>
+            </li>
+          
+            <li>
+              <a href="/tags/unit-testing.html" class="tag btn btn-tag btn-sm">unit-testing</a>
+            </li>
+          
+            <li>
+              <a href="/tags/security.html" class="tag btn btn-tag btn-sm">security</a>
+            </li>
+          
+            <li>
+              <a href="/tags/wpf.html" class="tag btn btn-tag btn-sm">wpf</a>
+            </li>
+          
+            <li>
+              <a href="/tags/validation.html" class="tag btn btn-tag btn-sm">validation</a>
+            </li>
+          
+            <li>
+              <a href="/tags/programming.html" class="tag btn btn-tag btn-sm">programming</a>
+            </li>
+          
+            <li>
+              <a href="/tags/sarcasm.html" class="tag btn btn-tag btn-sm">sarcasm</a>
+            </li>
+          
+            <li>
+              <a href="/tags/stackoverflow.html" class="tag btn btn-tag btn-sm">stackoverflow</a>
+            </li>
+          
+            <li>
+              <a href="/tags/dynamic.html" class="tag btn btn-tag btn-sm">dynamic</a>
+            </li>
+          
+            <li>
+              <a href="/tags/powershell.html" class="tag btn btn-tag btn-sm">powershell</a>
+            </li>
+          
+            <li>
+              <a href="/tags/angular.html" class="tag btn btn-tag btn-sm">angular</a>
+            </li>
+          
+            <li>
+              <a href="/tags/javascript.html" class="tag btn btn-tag btn-sm">javascript</a>
+            </li>
+          
+            <li>
+              <a href="/tags/dependency-injection.html" class="tag btn btn-tag btn-sm">dependency-injection</a>
+            </li>
+          
+            <li>
+              <a href="/tags/humor.html" class="tag btn btn-tag btn-sm">humor</a>
+            </li>
+          
+            <li>
+              <a href="/tags/jekyll.html" class="tag btn btn-tag btn-sm">jekyll</a>
+            </li>
+          
+            <li>
+              <a href="/tags/github.html" class="tag btn btn-tag btn-sm">github</a>
+            </li>
+          
+            <li>
+              <a href="/tags/bootstrap.html" class="tag btn btn-tag btn-sm">bootstrap</a>
+            </li>
+          
+            <li>
+              <a href="/tags/introspection.html" class="tag btn btn-tag btn-sm">introspection</a>
+            </li>
+          
+            <li>
+              <a href="/tags/ng-transform.html" class="tag btn btn-tag btn-sm">ng-transform</a>
+            </li>
+          
+          </ul>
+        </div>
+        
+        <div class="sidebar-links">
+         <h4><a href="/archives/">Archives</a></h4>
+        </div>
+        
+        
+        <div>
+            <h4>You Might Also Like:</h4>
+            
+            <h5>
+               <a href="/2010/06/25/extending-moq-using-extension-methods.html">Extending Moq Using Extension Methods</a>
+            </h5>
+            
+            <h5>
+               <a href="/2011/09/23/solving-ayende%27s-tax-woes.html">Solving Ayende's Tax Woes</a>
+            </h5>
+            
+            <h5>
+               <a href="/2011/02/11/wpf-fancy-winforms.html">WPF != Fancy Winforms</a>
+            </h5>
+            
+            <h5>
+               <a href="/2011/10/05/recursive-validation-using-dataannotations.html">Recursive Validation Using DataAnnotations</a>
+            </h5>
+            
+            <h5>
+               <a href="/2013/04/12/angular-modules-and-dependency-injection.html">Angular Modules And Dependency Injection</a>
+            </h5>
+            
+        </div>
+        
+        
+      </aside>
+    </div> <!-- /#secondary -->
+
+    <div id="primary" class="col-sm-12">
+      <div class="content">
+        
+        <header class="header">
+          <hgroup class="pull-left">
+            <h1 class="site-title">
+              <a rel="home" title="Techno Fattie" href="/">
+                <i class="fa fa-code"></i> Techno Fattie
+              </a>
+            </h1>            
+          </hgroup>
+          <div id="togglesidebar" class="btn btn-primary pull-right">
+            <i class="fa fa-bars"></i>
+          </div>
+        </header> <!-- /header -->
+
+        
+
+<section class="post">
+ <header class="entry-header">
+   <img class="entry-avatar" alt="Josh Carroll" height="52" width="52" src="http://www.gravatar.com/avatar/213ff080fa03648f0b71e4f4658a8046.png?s=52">
+   <h1 class="entry-title"><a href="/2014/02/15/angular-powered-text-transformations.html">Angular Powered Text Transformations - Part 1</a></h1>
+   <p class="entry-meta">
+     Posted on <a class="entry-date" href="/archives/#february-2014">15 February 2014</a> | 
+     By <a class="entry-author" href="/about/">Josh Carroll</a>
+     
+     | Tags 
+     
+     <a href="/tags/angular.html" class="btn btn-default btn-xs">angular</a> 
+     
+     <a href="/tags/javascript.html" class="btn btn-default btn-xs">javascript</a> 
+     
+     <a href="/tags/ng-transform.html" class="btn btn-default btn-xs">ng-transform</a> 
+     
+     
+   </p>
+ </header>
+ <div class="entry-description">
+   <h3>Tell me if this sounds familiar?</h3>
+
+<p>You have some uniform text you just copied from somewhere, like a set of column or property names.
+Maybe you got it from a spreadsheet. Maybe you copied it from the results of a query you ran... or maybe
+it was buried in the requirements somewhere.</p>
+
+<p>Regardless you&#39;ve got something that looks like this:</p>
+
+<div class="highlight"><pre><code class="powershell"><span class="n">Name</span>    <span class="n">FaceShape</span>   <span class="n">LegacyProperty</span>  <span class="n">NeverGetsUsed</span>   <span class="n">NobodyKnowsWhatThisMeans</span> <span class="n">KillMeNow</span>
+</code></pre></div>
+
+<p>Or maybe even this:</p>
+
+<div class="highlight"><pre><code class="powershell"><span class="n">Name</span>
+<span class="n">FaceShape</span>
+<span class="n">LegacyProperty</span>
+<span class="n">NeverGetsUsed</span>
+<span class="n">NobodyKnowsWhatThisMeans</span>
+<span class="n">KillMeNow</span>
+</code></pre></div>
+
+<p><strong>And now you need to use those same names in your code, and probably in more than one place.</strong>
+It might be you need to turn those into JavaScript class properties in one place, and a C# interface
+somewhere else.</p>
+
+<p>Now What?</p>
+
+<p><strong><em>You brute force it that&#39;s what you do!</em></strong></p>
+
+<h3>The Problem</h3>
+
+<p>You copy and paste and check and double check to make sure you
+didn&#39;t accidentally screw up in the process. At some point you will probably say to yourself:</p>
+
+<blockquote>
+<p><em>Oh my goodness if I have to copy and paste this one more time I am going to slit my wrists!</em></p>
+</blockquote>
+
+<p>But then you realize <strong>hey, I&#39;m a programmer, and why do anything more than once</strong> when you can have a computer do it for you.</p>
+
+<p>Unfortunately being the analytical type, you will also probably formulate a graph in your head that looks something like this:</p>
+
+<p><img src="/img/automate-vs-manual.png" alt="Automating vs. Manually Copying And Pasting" title="Automating vs. Manually Copying And Pasting"></p>
+
+<p>Realizing that <strong>the time it would take to automate this, for a one-off solution, wouldn&#39;t be any faster than
+just doing it manually</strong>, you decide to bite the bullet and get back to it. So you mumble some obscenities under your
+breath and go back to copy-pasting your way to hating life.</p>
+
+<h3>Angular To The Rescue! <small>...and javascript</small></h3>
+
+<p>Wouldn&#39;t it be nice if there were like a mini-ETL application that let you put together little text transformations
+and run them whenever you wanted to? Wouldn&#39;t it be nice if it were online so you could get to it from anywhere?</p>
+
+<p><strong>Angular.js gives us all the tools we need to build such a tool</strong>, so why don&#39;t we dive in and get started.</p>
+
+<p>We&#39;ll keep this basic for part 1 and slowly evolve it to be more useful. Visually we only need three things:</p>
+
+<ol>
+<li>An input for our raw text</li>
+<li>An output for the result</li>
+<li>A button to initiate the transform</li>
+</ol>
+
+<p>Using Bootstrap the markup might look something like this:</p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">role=</span><span class="s">&quot;form&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;tbInput&quot;</span><span class="nt">&gt;</span>Input<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;tbInput&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">rows=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;tbOutput&quot;</span><span class="nt">&gt;</span>Output<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;tbOutput&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">rows=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+
+<p><strong>The goal is to compose our transformation into a series of small steps, where the output
+from the last step becomes the input to the next.</strong></p>
+
+<p><img src="/img/transformation-pipeline.png" alt="Transformation Pipeline" title="Transformation Pipeline"></p>
+
+<p>Now let&#39;s create a simple Angular module and controller we can use to bind to that markup. Besides having some
+properties that we can bind our controls to, <strong>we need something to model our transformation pipeline.</strong>
+To start, we can just use a simple array of functions.</p>
+
+<p>Here is the skeleton:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">TransformCtrl</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">output</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+  <span class="c1">//This will eventually hold functions</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">transformations</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="p">};</span>
+
+<span class="nx">TransformCtrl</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">transform</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">//Handle the transformation pipeline here</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">module</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;ng-transform&#39;</span><span class="p">,</span> <span class="p">[]);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;transformCtrl&#39;</span><span class="p">,</span> <span class="nx">Controllers</span><span class="p">.</span><span class="nx">TransformCtrl</span><span class="p">);</span>
+</code></pre></div>
+
+<h3>Transformation Pipeline</h3>
+
+<p>Now let&#39;s build out that transformation pipeline. We want to keep it as simple as possible for right now, but the
+idea is to pass the initial input into the begining of the pipeline, and then pass the output of that into the next
+function. Rinse. Repeat.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">TransformCtrl</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">transform</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">//Make copies for posterity</span>
+  <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">),</span>
+      <span class="nx">transformFunctions</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">transformations</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="c1">//Kick off the pipeline and keep pushing the output</span>
+  <span class="c1">// from the last step into the next</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">transformFunctions</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">input</span> <span class="o">=</span> <span class="nx">transformFunctions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="nx">input</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">output</span> <span class="o">=</span> <span class="nx">input</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>So that&#39;s it. Pretty simple to start.</p>
+
+<p>You&#39;ll notice that I am making a copy of the input initially to pass into the first function, and then <strong>capturing
+the result of each step of the transformation</strong>, which I then copy and pass into the next step. This gives us a nice linear
+pipeline, and the foundation to build off of.</p>
+
+<h3>Adding Transformations</h3>
+
+<p>Without actually adding some transformations to the mix, this thing is going to be pretty useless, so let&#39;s <strong>put together
+a few examples to demonstrate the process.</strong></p>
+
+<p>Suppose we wanted to take our tab separated list of names up there, and turn it into a JavaScript object. We might want
+to break that down into roughly 4 steps.</p>
+
+<ol>
+<li>Split the single line into an array of strings</li>
+<li>Alphabetize the names</li>
+<li>Lower case the first letter</li>
+<li>Format the remaining output as a simple JS Object</li>
+</ol>
+
+<p><strong>Each of those steps can be modelled as a function within our pipeline.</strong> So let&#39;s go ahead and build them out now.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">TransformCtrl</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">splitWhiteSpace</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">input</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="sr">/\s+/</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">TransformCtrl</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">alphabetize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">input</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span><span class="p">.</span><span class="nx">localeCompare</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">input</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">TransformCtrl</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">lowercaseFirst</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">output</span> <span class="o">=</span> <span class="p">[],</span>
+      <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">input</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">output</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">lowercaseFirstSingle</span><span class="p">(</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">]));</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">output</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">TransformCtrl</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">lowercaseFirstSingle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^([A-Z]{1})/g</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">match</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="nx">TransformCtrl</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">propertiesToJSObject</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">objLines</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;var NewObj = function(config){&quot;</span><span class="p">];</span>
+
+  <span class="c1">//Format each property as &quot;this.name = config.name;&quot;</span>
+  <span class="nx">angular</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">prop</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">objLines</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;  this.&quot;</span> <span class="o">+</span> <span class="nx">prop</span> <span class="o">+</span> <span class="s2">&quot; = config.&quot;</span> <span class="o">+</span> <span class="nx">prop</span> <span class="o">+</span> <span class="s2">&quot;;&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">objLines</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;};&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="nx">objLines</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>Once we have all of those function added to our controller, we can simply <strong>build up our transformation pipeline by
+adding them to the array of functions.</strong> Sprinkle in a little angular binding into our markup and we will have a very
+basic text transformation utility.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">TransformCtrl</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">output</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">transformations</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">splitWhiteSpace</span><span class="p">,</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">alphabetize</span><span class="p">,</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">lowercaseFirst</span><span class="p">,</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">propertiesToJSObject</span>
+  <span class="p">];</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<h3>Results</h3>
+
+<p>The end result is that you end up transforming this line of text:</p>
+
+<div class="highlight"><pre><code class="powershell"><span class="n">Name</span>    <span class="n">FaceShape</span>   <span class="n">LegacyProperty</span>  <span class="n">NeverGetsUsed</span>   <span class="n">NobodyKnowsWhatThisMeans</span> <span class="n">KillMeNow</span>
+</code></pre></div>
+
+<p>Into this little code snippet:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">NewObj</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">){</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">faceShape</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">faceShape</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">killMeNow</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">killMeNow</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">legacyProperty</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">legacyProperty</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">neverGetsUsed</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">neverGetsUsed</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">nobodyKnowsWhatThisMeans</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">nobodyKnowsWhatThisMeans</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<h3>Try It For Yourself:</h3>
+
+<p>You can check out the <a href="http://jsfiddle.net/jwcarroll/zwrzf/" target="_blank">full code, and working demo here</a>.</p>
+
+<p><strong>In part 2 we will look at using a service to DRY up our code, add some error handling, and support for multiple transformations.</strong></p>
+
+ </div>
+ 
+
+<div class="footer">
+    <h4>Share This Post</h4>
+
+    <div class="socials-footer">
+        <a class="btn btn-twitter" href="http://twitter.com/share?text=Angular Powered Text Transformations - Part 1 by @jwcarroll&url=http://www.technofattie.com/2014/02/15/angular-powered-text-transformations.html"
+           onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.technofattie.com/2014/02/15/angular-powered-text-transformations.html"
+           onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+        </a>
+        <a class="btn btn-google-plus" href="https://plus.google.com/share?url=http://www.technofattie.com/2014/02/15/angular-powered-text-transformations.html"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+            <i class="fa fa-google-plus"></i>
+        </a>
+    </div>
+</div>
+</section>
+
+<div class="comments">
+ <div id="disqus_thread"></div>
+ <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'technofattie'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+ <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+        <footer class="footer">
+          <p>© <a href="/about/">Josh Carroll</a> 2014. All right reserved.</p>
+          <div class="socials-footer">
+          
+            <a class="btn btn-twitter" href="https://twitter.com/jwcarroll" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          
+            <a class="btn btn-linkedin" href="https://www.linkedin.com/in/jwcarroll" title="LinkedIn">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          
+            <a class="btn btn-google-plus" href="https://www.google.com/+JoshCarrollW" title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          
+            <a class="btn btn-github" href="https://github.com/jwcarroll" title="GitHub">
+              <i class="fa fa-github"></i>
+            </a>
+          
+          </div> <!-- /.socials-footer -->
+        </footer> <!-- /footer -->
+
+      </div>
+    </div> <!-- /#primary -->
+
+    <!-- Scripts -->
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/custom.js"></script>
+
+  </body>
+</html>

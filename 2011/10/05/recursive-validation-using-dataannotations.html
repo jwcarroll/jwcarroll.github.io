@@ -22,7 +22,7 @@
 
     <!-- Styles -->
     <link href="/css/main.css" rel="stylesheet">
-    <link href="/css/pygments/vs.css" rel="stylesheet">
+    <link href="/css/pygments/syntax.css" rel="stylesheet">
 
     <!-- Loading bar -->
     <script src="/js/pace.min.js"></script>
@@ -32,6 +32,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
 
+    
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -42,6 +43,7 @@
     ga('send', 'pageview');
 
 </script>
+    
   </head>
 
   <body>
@@ -150,6 +152,10 @@
             </li>
           
             <li>
+              <a href="/tags/javascript.html" class="tag btn btn-tag btn-sm">javascript</a>
+            </li>
+          
+            <li>
               <a href="/tags/dependency-injection.html" class="tag btn btn-tag btn-sm">dependency-injection</a>
             </li>
           
@@ -173,6 +179,10 @@
               <a href="/tags/introspection.html" class="tag btn btn-tag btn-sm">introspection</a>
             </li>
           
+            <li>
+              <a href="/tags/ng-transform.html" class="tag btn btn-tag btn-sm">ng-transform</a>
+            </li>
+          
           </ul>
         </div>
         
@@ -193,15 +203,15 @@
             </h5>
             
             <h5>
-               <a href="/2012/08/31/prototypal-inheritance-in-c%23.html">Prototypal Inheritance in C#</a>
-            </h5>
-            
-            <h5>
                <a href="/2010/06/25/extending-moq-using-extension-methods.html">Extending Moq Using Extension Methods</a>
             </h5>
             
             <h5>
-               <a href="/2011/02/09/unit-testing-and-declarative-security-part-1.html">Unit Testing and Declarative Security, Part 1</a>
+               <a href="/2012/08/31/prototypal-inheritance-in-c%23.html">Prototypal Inheritance in C#</a>
+            </h5>
+            
+            <h5>
+               <a href="/2014/02/15/angular-powered-text-transformations.html">Angular Powered Text Transformations - Part 1</a>
             </h5>
             
         </div>
@@ -248,7 +258,159 @@
    </p>
  </header>
  <div class="entry-description">
-   I saw a <a href="http://stackoverflow.com/questions/7663501/dataannotations-recursively-validating-an-entire-object-graph">post on Stackoverflow</a> today that piqued my interest.<br /><br />The title really says it all:<br /><br /><span class="Apple-style-span" style="background-color: white; font-family: 'Trebuchet MS', 'Liberation Sans', 'DejaVu Sans', sans-serif; line-height: 12px;"></span><br /><h1 style="background-attachment: initial; background-clip: initial; background-color: transparent; background-image: initial; background-origin: initial; border-bottom-width: 0px; border-color: initial; border-left-width: 0px; border-right-width: 0px; border-style: initial; border-top-width: 0px; font-family: 'Trebuchet MS', 'Liberation Sans', 'DejaVu Sans', sans-serif; font-weight: bold; margin-bottom: 7px; margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; vertical-align: baseline;"> <span class="Apple-style-span" style="background-attachment: initial; background-clip: initial; background-color: transparent; background-image: initial; background-origin: initial; border-bottom-width: 0px; border-color: initial; border-left-width: 0px; border-right-width: 0px; border-style: initial; border-top-width: 0px; color: black; cursor: pointer; font-size: small; font-weight: bold; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; text-decoration: none; vertical-align: baseline;"><a class="question-hyperlink" href="http://stackoverflow.com/questions/7663501/dataannotations-recursively-validating-an-entire-object-graph" style="background-attachment: initial; background-clip: initial; background-color: transparent; background-image: initial; background-origin: initial; border-bottom-width: 0px; border-color: initial; border-left-width: 0px; border-right-width: 0px; border-style: initial; border-top-width: 0px; color: black; cursor: pointer; font-weight: bold; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; text-decoration: none; vertical-align: baseline;">DataAnnotations: Recursively validating an entire object graph</a></span></h1><br />Using the DataAnnotations to do validation on object can be extermely useful, but there are many limitations to the existing code base. One such limitations, as <a href="http://stackoverflow.com/users/26414/neil-barnwell">Neil </a>has discovered, is that the out of the box validator doesn't recursively apply validation.<br /><br />Indeed looking at the MSDN docs for <a href="http://msdn.microsoft.com/en-us/library/dd411772.aspx">TryValidateObject</a> state clearly that:<br /><blockquote><span class="Apple-style-span" style="font-family: 'Segoe UI', Verdana, Arial; font-size: 13px;">This method evaluates each&nbsp;<a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.validationattribute.aspx" style="color: #1364c4; text-decoration: none;">ValidationAttribute</a>&nbsp;instance that is attached to the object type. It also checks whether each property that is marked with&nbsp;<a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx" style="color: #1364c4; text-decoration: none;">RequiredAttribute</a>&nbsp;is provided.<span class="Apple-style-span" style="background-color: yellow;"> It does not recursively validate</span> the property values of the object.</span></blockquote>&nbsp;So how do we get around this? Well... there are several examples of people using reflection and LINQ to recurse over the individual properties and validate each one of them. Yuck!<br /><br /><b>I'm a big fan of working with the framework</b> if at all possible, so I decided to implement a quick solution that fits nicely into the DataAnnotations world.<br /><br />The idea is to simply tell the validation framework that you would like to do a little extra with some particular property. I want to be able to be able to <i>opt in</i> certain properties to further validation if necessary. Something like this.<br /><br /><pre><code>public class Person {<br />  [Required]<br />  public String Name { get; set; }<br /><br />  [Required, ValidateObject]<br />  public Address Address { get; set; }<br />}</code></pre><br />Address could have it's own set of validation attributes, and I want to also validate those along with my Person type. <b>Turns out this is pretty simple to do using existing framework components.</b><br /><b><br /></b><br />Let me just show you the code, and then I can explain what is going on. <br /><br /><pre><code>public class ValidateObjectAttribute: ValidationAttribute {<br />   protected override ValidationResult IsValid(object value, ValidationContext validationContext) {<br />      var results = new List&lt;ValidationResult&gt;();<br />      var context = new ValidationContext(value, null, null);<br />         <br />      Validator.TryValidateObject(value, context, results, true);<br /><br />      if (results.Count != 0) {<br />         var compositeResults = new CompositeValidationResult(String.Format("Validation for {0} failed!", validationContext.DisplayName));<br />         results.ForEach(compositeResults.AddResult);<br /><br />         return compositeResults;<br />      }<br /><br />      return ValidationResult.Success;<br />   }<br />}<br /><br />public class CompositeValidationResult: ValidationResult {<br />   private readonly List&lt;ValidationResult&gt; _results = new List&lt;ValidationResult&gt;();<br /><br />   public IEnumerable&lt;ValidationResult&gt; Results {<br />      get {<br />         return _results;<br />      }<br />   }<br /><br />   public CompositeValidationResult(string errorMessage) : base(errorMessage) {}<br />   public CompositeValidationResult(string errorMessage, IEnumerable&lt;string&gt; memberNames) : base(errorMessage, memberNames) {}<br />   protected CompositeValidationResult(ValidationResult validationResult) : base(validationResult) {}<br /><br />   public void AddResult(ValidationResult validationResult) {<br />      _results.Add(validationResult);<br />   }<br />}<br /></string></code></pre><br /><br />The idea here is pretty simple. Any property decorated with the ValidateObjectAttribute will be validated as a whole, and the results aggregated together. The processing is as follows: <br /><br /><ol><li>Create a new ValidationContext using the current value as the target</li><li>Attempt to validate that object, being sure to include all properties</li><li>If there are any ValidationResults, store them and return as a single aggregate failure</li><li>If there are no results, return ValidationResults.Success</li></ol><div>Putting it all together, imagine for a minute that we had the following class structure:</div><div><br /></div><pre><code>public class Person {<br />  [Required]<br />  public String Name { get; set; }<br /><br />  [Required, ValidateObject]<br />  public Address Address { get; set; }<br />}<br /><br />public class Address {<br />  [Required]<br />  public String Street1 { get; set; }<br /><br />  public String Street2 { get; set; }<br /><br />  [Required]<br />  public String City { get; set; }<br /><br />  [Required]<br />  public String State { get; set; }<br /><br />  [Required, ValidateObject]<br />  public ZipCode Zip { get; set; }<br />}<br /><br />public class ZipCode {<br />  [Required]<br />  public String PrimaryCode { get; set; }<br /><br />  public String SubCode { get; set; }<br />}<br /></code><br /></pre><br />We can simply make use of existing methods and validate the entire object graph. Also, making use of our CompositeValidationResult, we should be able to drill into each individual failure in context.<br /><br /><br /><pre><code>static void Main(string[] args) {<br />   var person = new Person {<br />      Address = new Address {<br />         City = "Awesome Town",<br />         State = "TN",<br />         Zip = new ZipCode()<br />      },<br />      Name = "Josh"<br />   };<br /><br />   var context = new ValidationContext(person, null, null);<br />   var results = new List&lt;ValidationResult&gt;();<br /><br />   Validator.TryValidateObject(person, context, results, true);<br /><br />   PrintResults(results, 0);<br /><br />   Console.ReadKey();<br />}<br /><br />private static void PrintResults(IEnumerable&lt;ValidationResult&gt; results, Int32 indentationLevel) {<br />   foreach (var validationResult in results) {<br />      SetIndentation(indentationLevel);<br /><br />      Console.WriteLine(validationResult.ErrorMessage);<br />      Console.WriteLine();<br /><br />      if (validationResult is CompositeValidationResult) {<br />         PrintResults(((CompositeValidationResult)validationResult).Results, indentationLevel + 1);<br />      }<br />   }<br />}<br /><br />private static void SetIndentation(int indentationLevel) {<br />   Console.CursorLeft = indentationLevel * 4;<br />}<br /></code><br /></pre><br />Running the above should result in the following output: <br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-mJLDCk0nY4Y/Toycmc6xuWI/AAAAAAAABF8/M99mCHMfxWs/s1600/RecursiveValidation.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="163" src="http://1.bp.blogspot.com/-mJLDCk0nY4Y/Toycmc6xuWI/AAAAAAAABF8/M99mCHMfxWs/s400/RecursiveValidation.png" width="366" /></a></div><br /><br />Well, there you have it. A pretty simple solution that has the advantage of working alongside the Validation framework instead of against it!
+   <p>I saw a <a href="http://stackoverflow.com/questions/7663501/dataannotations-recursively-validating-an-entire-object-graph">post on Stackoverflow</a> today that piqued my interest.</p>
+
+<p>The title really says it all:</p>
+
+<p><span class="Apple-style-span" style="background-color: white; font-family: 'Trebuchet MS', 'Liberation Sans', 'DejaVu Sans', sans-serif; line-height: 12px;"></span>
+<h1 style="background-attachment: initial; background-clip: initial; background-color: transparent; background-image: initial; background-origin: initial; border-bottom-width: 0px; border-color: initial; border-left-width: 0px; border-right-width: 0px; border-style: initial; border-top-width: 0px; font-family: 'Trebuchet MS', 'Liberation Sans', 'DejaVu Sans', sans-serif; font-weight: bold; margin-bottom: 7px; margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; vertical-align: baseline;"> <span class="Apple-style-span" style="background-attachment: initial; background-clip: initial; background-color: transparent; background-image: initial; background-origin: initial; border-bottom-width: 0px; border-color: initial; border-left-width: 0px; border-right-width: 0px; border-style: initial; border-top-width: 0px; color: black; cursor: pointer; font-size: small; font-weight: bold; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; text-decoration: none; vertical-align: baseline;"><a class="question-hyperlink" href="http://stackoverflow.com/questions/7663501/dataannotations-recursively-validating-an-entire-object-graph" style="background-attachment: initial; background-clip: initial; background-color: transparent; background-image: initial; background-origin: initial; border-bottom-width: 0px; border-color: initial; border-left-width: 0px; border-right-width: 0px; border-style: initial; border-top-width: 0px; color: black; cursor: pointer; font-weight: bold; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; text-decoration: none; vertical-align: baseline;">DataAnnotations: Recursively validating an entire object graph</a></span></h1>
+Using the DataAnnotations to do validation on object can be extermely useful, but there are many limitations to the existing code base. One such limitations, as <a href="http://stackoverflow.com/users/26414/neil-barnwell">Neil </a>has discovered, is that the out of the box validator doesn&#39;t recursively apply validation.</p>
+
+<p>Indeed looking at the MSDN docs for <a href="http://msdn.microsoft.com/en-us/library/dd411772.aspx">TryValidateObject</a> state clearly that:
+<blockquote><span class="Apple-style-span" style="font-family: 'Segoe UI', Verdana, Arial; font-size: 13px;">This method evaluates each&nbsp;<a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.validationattribute.aspx" style="color: #1364c4; text-decoration: none;">ValidationAttribute</a>&nbsp;instance that is attached to the object type. It also checks whether each property that is marked with&nbsp;<a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx" style="color: #1364c4; text-decoration: none;">RequiredAttribute</a>&nbsp;is provided.<span class="Apple-style-span" style="background-color: yellow;"> It does not recursively validate</span> the property values of the object.</span></blockquote>&nbsp;So how do we get around this? Well... there are several examples of people using reflection and LINQ to recurse over the individual properties and validate each one of them. Yuck!</p>
+
+<p><b>I&#39;m a big fan of working with the framework</b> if at all possible, so I decided to implement a quick solution that fits nicely into the DataAnnotations world.</p>
+
+<p>The idea is to simply tell the validation framework that you would like to do a little extra with some particular property. I want to be able to be able to <i>opt in</i> certain properties to further validation if necessary. Something like this.</p>
+
+<div class="highlight"><pre><code class="c#"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">{</span>
+<span class="na">  [Required]</span>
+  <span class="k">public</span> <span class="n">String</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="na">  [Required, ValidateObject]</span>
+  <span class="k">public</span> <span class="n">Address</span> <span class="n">Address</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Address could have it&#39;s own set of validation attributes, and I want to also validate those along with my Person type. <b>Turns out this is pretty simple to do using existing framework components.</b></p>
+
+<p>Let me just show you the code, and then I can explain what is going on.</p>
+
+<div class="highlight"><pre><code class="c#"><span class="k">public</span> <span class="k">class</span> <span class="nc">ValidateObjectAttribute</span><span class="p">:</span> <span class="n">ValidationAttribute</span> <span class="p">{</span>
+   <span class="k">protected</span> <span class="k">override</span> <span class="n">ValidationResult</span> <span class="nf">IsValid</span><span class="p">(</span><span class="kt">object</span> <span class="k">value</span><span class="p">,</span> <span class="n">ValidationContext</span> <span class="n">validationContext</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">var</span> <span class="n">results</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ValidationResult</span><span class="p">&gt;();</span>
+      <span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ValidationContext</span><span class="p">(</span><span class="k">value</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+
+      <span class="n">Validator</span><span class="p">.</span><span class="n">TryValidateObject</span><span class="p">(</span><span class="k">value</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">results</span><span class="p">.</span><span class="n">Count</span> <span class="p">!=</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+         <span class="kt">var</span> <span class="n">compositeResults</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CompositeValidationResult</span><span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;Validation for {0} failed!&quot;</span><span class="p">,</span> <span class="n">validationContext</span><span class="p">.</span><span class="n">DisplayName</span><span class="p">));</span>
+         <span class="n">results</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">compositeResults</span><span class="p">.</span><span class="n">AddResult</span><span class="p">);</span>
+
+         <span class="k">return</span> <span class="n">compositeResults</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">return</span> <span class="n">ValidationResult</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">CompositeValidationResult</span><span class="p">:</span> <span class="n">ValidationResult</span> <span class="p">{</span>
+   <span class="k">private</span> <span class="k">readonly</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ValidationResult</span><span class="p">&gt;</span> <span class="n">_results</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ValidationResult</span><span class="p">&gt;();</span>
+
+   <span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">ValidationResult</span><span class="p">&gt;</span> <span class="n">Results</span> <span class="p">{</span>
+      <span class="k">get</span> <span class="p">{</span>
+         <span class="k">return</span> <span class="n">_results</span><span class="p">;</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="nf">CompositeValidationResult</span><span class="p">(</span><span class="kt">string</span> <span class="n">errorMessage</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">errorMessage</span><span class="p">)</span> <span class="p">{}</span>
+   <span class="k">public</span> <span class="nf">CompositeValidationResult</span><span class="p">(</span><span class="kt">string</span> <span class="n">errorMessage</span><span class="p">,</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">memberNames</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">errorMessage</span><span class="p">,</span> <span class="n">memberNames</span><span class="p">)</span> <span class="p">{}</span>
+   <span class="k">protected</span> <span class="nf">CompositeValidationResult</span><span class="p">(</span><span class="n">ValidationResult</span> <span class="n">validationResult</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">validationResult</span><span class="p">)</span> <span class="p">{}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="nf">AddResult</span><span class="p">(</span><span class="n">ValidationResult</span> <span class="n">validationResult</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">_results</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">validationResult</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The idea here is pretty simple. Any property decorated with the ValidateObjectAttribute will be validated as a whole, and the results aggregated together. The processing is as follows: </p>
+
+<ol>
+<li>Create a new ValidationContext using the current value as the target</li>
+<li>Attempt to validate that object, being sure to include all properties</li>
+<li>If there are any ValidationResults, store them and return as a single aggregate failure</li>
+<li>If there are no results, return ValidationResults.Success</li>
+</ol>
+
+<p>Putting it all together, imagine for a minute that we had the following class structure:</p>
+
+<div class="highlight"><pre><code class="c#"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">{</span>
+<span class="na">  [Required]</span>
+  <span class="k">public</span> <span class="n">String</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="na">  [Required, ValidateObject]</span>
+  <span class="k">public</span> <span class="n">Address</span> <span class="n">Address</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Address</span> <span class="p">{</span>
+<span class="na">  [Required]</span>
+  <span class="k">public</span> <span class="n">String</span> <span class="n">Street1</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="k">public</span> <span class="n">String</span> <span class="n">Street2</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="na">  [Required]</span>
+  <span class="k">public</span> <span class="n">String</span> <span class="n">City</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="na">  [Required]</span>
+  <span class="k">public</span> <span class="n">String</span> <span class="n">State</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="na">  [Required, ValidateObject]</span>
+  <span class="k">public</span> <span class="n">ZipCode</span> <span class="n">Zip</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">ZipCode</span> <span class="p">{</span>
+<span class="na">  [Required]</span>
+  <span class="k">public</span> <span class="n">String</span> <span class="n">PrimaryCode</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="k">public</span> <span class="n">String</span> <span class="n">SubCode</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>We can simply make use of existing methods and validate the entire object graph. Also, making use of our CompositeValidationResult, we should be able to drill into each individual failure in context.</p>
+
+<div class="highlight"><pre><code class="c#"><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kt">var</span> <span class="n">person</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Person</span> <span class="p">{</span>
+      <span class="n">Address</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Address</span> <span class="p">{</span>
+         <span class="n">City</span> <span class="p">=</span> <span class="s">&quot;Awesome Town&quot;</span><span class="p">,</span>
+         <span class="n">State</span> <span class="p">=</span> <span class="s">&quot;TN&quot;</span><span class="p">,</span>
+         <span class="n">Zip</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ZipCode</span><span class="p">()</span>
+      <span class="p">},</span>
+      <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Josh&quot;</span>
+   <span class="p">};</span>
+
+   <span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ValidationContext</span><span class="p">(</span><span class="n">person</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+   <span class="kt">var</span> <span class="n">results</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ValidationResult</span><span class="p">&gt;();</span>
+
+   <span class="n">Validator</span><span class="p">.</span><span class="n">TryValidateObject</span><span class="p">(</span><span class="n">person</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+   <span class="n">PrintResults</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+
+   <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">PrintResults</span><span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">ValidationResult</span><span class="p">&gt;</span> <span class="n">results</span><span class="p">,</span> <span class="n">Int32</span> <span class="n">indentationLevel</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">validationResult</span> <span class="k">in</span> <span class="n">results</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">SetIndentation</span><span class="p">(</span><span class="n">indentationLevel</span><span class="p">);</span>
+
+      <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">validationResult</span><span class="p">.</span><span class="n">ErrorMessage</span><span class="p">);</span>
+      <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">validationResult</span> <span class="k">is</span> <span class="n">CompositeValidationResult</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">PrintResults</span><span class="p">(((</span><span class="n">CompositeValidationResult</span><span class="p">)</span><span class="n">validationResult</span><span class="p">).</span><span class="n">Results</span><span class="p">,</span> <span class="n">indentationLevel</span> <span class="p">+</span> <span class="m">1</span><span class="p">);</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">SetIndentation</span><span class="p">(</span><span class="kt">int</span> <span class="n">indentationLevel</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">Console</span><span class="p">.</span><span class="n">CursorLeft</span> <span class="p">=</span> <span class="n">indentationLevel</span> <span class="p">*</span> <span class="m">4</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Running the above should result in the following output: </p>
+
+<div class="separator" style="clear: both; text-align: center;"><a href="/img/RecursiveValidation.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="163" src="http://1.bp.blogspot.com/-mJLDCk0nY4Y/Toycmc6xuWI/AAAAAAAABF8/M99mCHMfxWs/s400/RecursiveValidation.png" width="366" /></a></div>
+
+<p>Well, there you have it. A pretty simple solution that has the advantage of working alongside the Validation framework instead of against it!</p>
 
  </div>
  
