@@ -312,6 +312,10 @@ I can assure you there is a better way.</p>
 mean you should.</strong> Inline functions encourage you to shove everything into <code>$scope</code>, but defining your controller as a class
 and using the prototype to add functionality helps to keep you honest.</p>
 
+<p>** <strong>Update</strong> **
+<em>A colleage of mine, correctly pointed out that the <code>this</code> pointer was refering to <code>$scope</code> instead of the controller.
+I forgot to pull out a reference to the controller using a closure. You could also do this using the <code>.bind()</code> method.</em></p>
+
 <div class="highlight"><pre><code class="javascript"><span class="c1">//Don&#39;t do this</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;MyCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">){</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">doStuff</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
@@ -322,8 +326,10 @@ and using the prototype to add functionality helps to keep you honest.</p>
 
 <span class="c1">//Do this instead</span>
 <span class="kd">var</span> <span class="nx">MyCtrl</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">_this</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">doStuff</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">doStuff</span><span class="p">();</span>
+    <span class="nx">_this</span><span class="p">.</span><span class="nx">doStuff</span><span class="p">();</span>
   <span class="p">};</span>
 <span class="p">};</span>
 
