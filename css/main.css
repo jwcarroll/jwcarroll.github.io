@@ -338,6 +338,11 @@ ul.archive-list {
    cursor: not-allowed;
 }
 
+.keyword {
+    font-weight: bold;
+    color: #d9534f;
+}
+
 /* Pre overrides for Twitter Bootstrap */
 pre {
     display: block;

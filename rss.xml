@@ -9,7 +9,16 @@
     <link>http://www.technofattie.com</link>
     <description>Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming.</description>
     <copyright>2014 Josh Carroll All rights reserved</copyright>
-    <pubDate>Sat, 15 Feb 2014 00:00:00 -0500</pubDate>
+    <pubDate>Fri, 21 Mar 2014 00:00:00 -0400</pubDate>
+    <item>
+      <title>5 Guidelines For Avoiding Scope Soup in Angular</title>
+      <link>http://www.technofattie.com/2014/03/21/five-guidelines-for-avoiding-scope-soup-in-angular.html</link>
+      <description>&lt;h3&gt;Today I was answering a question on Stackoverflow about Angular.js&lt;/h3&gt;
+</description>
+      <pubDate>Fri, 21 Mar 2014 00:00:00 -0400</pubDate>
+      <guid>http://www.technofattie.com/2014/03/21/five-guidelines-for-avoiding-scope-soup-in-angular.html</guid>
+      <dc:date>2014-03-21T00:00:00-04:00</dc:date>
+    </item>
     <item>
       <title>Angular Powered Text Transformations - Part 1</title>
       <link>http://www.technofattie.com/2014/02/15/angular-powered-text-transformations.html</link>
@@ -207,6 +216,6 @@
       <guid>http://www.technofattie.com/2007/12/22/mandelbrot-bitmap.html</guid>
       <dc:date>2007-12-22T00:00:00-05:00</dc:date>
     </item>
-    <dc:date>2014-02-15T00:00:00-05:00</dc:date>
+    <dc:date>2014-03-21T00:00:00-04:00</dc:date>
   </channel>
 </rss>
