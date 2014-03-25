@@ -9,7 +9,18 @@
     <link>http://www.technofattie.com</link>
     <description>Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming.</description>
     <copyright>2014 Josh Carroll All rights reserved</copyright>
-    <pubDate>Fri, 21 Mar 2014 00:00:00 -0400</pubDate>
+    <pubDate>Tue, 25 Mar 2014 00:00:00 -0400</pubDate>
+    <item>
+      <title>How To Extend Angular's Script Directive</title>
+      <link>http://www.technofattie.com/2014/03/25/how-to-extend-angular-script-directive.html</link>
+      <description>&lt;p&gt;&lt;strong&gt;Angular&amp;#39;s built in &lt;a href=&quot;http://docs.angularjs.org/api/ng/directive/script&quot;&gt;script directive&lt;/a&gt; is really nice for embedded templates, but not much else.&lt;/strong&gt; If you are like me, you
+have found yourself wanting to be able to extend it to work for other types of embedded data. Luckily this turns out
+to be pretty easy, but not obvious.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 25 Mar 2014 00:00:00 -0400</pubDate>
+      <guid>http://www.technofattie.com/2014/03/25/how-to-extend-angular-script-directive.html</guid>
+      <dc:date>2014-03-25T00:00:00-04:00</dc:date>
+    </item>
     <item>
       <title>5 Guidelines For Avoiding Scope Soup in Angular</title>
       <link>http://www.technofattie.com/2014/03/21/five-guidelines-for-avoiding-scope-soup-in-angular.html</link>
@@ -216,6 +227,6 @@
       <guid>http://www.technofattie.com/2007/12/22/mandelbrot-bitmap.html</guid>
       <dc:date>2007-12-22T00:00:00-05:00</dc:date>
     </item>
-    <dc:date>2014-03-21T00:00:00-04:00</dc:date>
+    <dc:date>2014-03-25T00:00:00-04:00</dc:date>
   </channel>
 </rss>

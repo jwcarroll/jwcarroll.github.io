@@ -101,6 +101,12 @@
         <lastmod>2014-03-22T10:40:36-04:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://www.technofattie.com/2014/03/25/how-to-extend-angular-script-directive.html
+        </loc>
+        <lastmod>2014-03-25T01:35:04-04:00</lastmod>
+    </url>
+    <url>
         <loc>http://www.technofattie.com/about/</loc>
         <lastmod>2014-03-22T10:40:36-04:00</lastmod>
     </url>
@@ -114,6 +120,6 @@
     </url>
     <url>
         <loc>http://www.technofattie.com/</loc>
-        <lastmod>2014-03-22T10:40:36-04:00</lastmod>
+        <lastmod>2014-03-25T01:35:04-04:00</lastmod>
     </url>
 </urlset>
