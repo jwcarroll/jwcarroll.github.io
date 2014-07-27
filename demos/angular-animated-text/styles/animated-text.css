@@ -1,0 +1,33 @@
+/* Styles go here */
+
+.list-animation.ng-enter {
+    /* standard transition code */
+    -webkit-animation: rollIn 0.5s;
+    animation: rollIn 0.5s;
+}
+.list-animation.ng-enter-stagger {
+    /* this will have a 100ms delay between each successive leave animation */
+    -webkit-animation-delay: 0.05s;
+    animation-delay: 0.05s;
+
+    /* in case the stagger doesn't work then these two values
+     must be set to 0 to avoid an accidental CSS inheritance */
+    -webkit-animation-duration: 0s;
+    animation-duration: 0s;
+}
+
+.list-animation.ng-leave {
+    /* standard transition code */
+    -webkit-animation: rollOut 0.5s;
+    animation: rollOut 0.5s;
+}
+.list-animation.ng-leave-stagger {
+    /* this will have a 100ms delay between each successive leave animation */
+    -webkit-animation-delay: 0.05s;
+    animation-delay: 0.05s;
+
+    /* in case the stagger doesn't work then these two values
+     must be set to 0 to avoid an accidental CSS inheritance */
+    -webkit-animation-duration: 0s;
+    animation-duration: 0s;
+}

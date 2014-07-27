@@ -87,6 +87,10 @@
               <i class="fa fa-github"></i>
             </a>
           
+            <a class="btn btn-rss" href="/rss.xml" title="RSS">
+              <i class="fa fa-rss"></i>
+            </a>
+          
           </div> <!-- /.socials-sidebar -->
         </div>
         
@@ -206,6 +210,10 @@
               <a href="/tags/controller-as.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">controller-as</span></a>
             </li>
           
+            <li>
+              <a href="/tags/routing.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">routing</span></a>
+            </li>
+          
           </ul>
         </div>
         
@@ -226,11 +234,11 @@
             </h5>
             
             <h5>
-               <a href="/2011/04/08/unit-testing-and-declarative-security-part-2.html">Unit Testing and Declarative Security, Part 2</a>
+               <a href="/2011/02/11/wpf-fancy-winforms.html">WPF != Fancy Winforms</a>
             </h5>
             
             <h5>
-               <a href="/2011/02/11/wpf-fancy-winforms.html">WPF != Fancy Winforms</a>
+               <a href="/2014/07/27/easy-loading-indicator-when-switching-views-in-angular.html">Easy Loading Indicator When Switching Views In Angular</a>
             </h5>
             
             <h5>
@@ -293,7 +301,7 @@ to be pretty easy, but not obvious.</p>
 <p><strong>But what if you&#39;ve got a view that also has some context specific info that you want to make available to the client.</strong>
 You don&#39;t want to make <em>another</em> trip to the server to get it, so you encode it as JSON, and embed it into a <code>&lt;script&gt;</code> tag.</p>
 
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/context-info&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/context-info&quot;</span><span class="nt">&gt;</span>
 <span class="p">{</span>
    <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;foo-view&quot;</span><span class="p">,</span>
    <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">34</span><span class="p">,</span>
@@ -317,7 +325,7 @@ While you may already know about the <a href="http://docs.angularjs.org/api/auto
 
 <p>What does that look like?</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">).</span><span class="nx">config</span><span class="p">([</span>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">).</span><span class="nx">config</span><span class="p">([</span>
     <span class="s1">&#39;$provide&#39;</span><span class="p">,</span>
     <span class="kd">function</span> <span class="p">(</span><span class="nx">$provide</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">$provide</span><span class="p">.</span><span class="nx">decorator</span><span class="p">(</span><span class="s1">&#39;scriptDirective&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$delegate</span><span class="p">){</span>
@@ -333,7 +341,7 @@ of JavaScript to add new functionality to the existing directive in order to ach
 <p>The script directive uses the <code>compile</code> method to work it&#39;s magic so that is where we are going to tap in. The first thing
 we need to do is grab a reference to the original compile method.</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">scriptDirective</span> <span class="o">=</span> <span class="nx">$delegate</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">scriptDirective</span> <span class="o">=</span> <span class="nx">$delegate</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
     <span class="nx">originalCompile</span> <span class="o">=</span> <span class="nx">scriptDirective</span><span class="p">.</span><span class="nx">compile</span><span class="p">;</span>
 </code></pre></div>
 
@@ -343,7 +351,7 @@ to the original compile method.</p>
 
 <p>Finally we just return the intercepted <code>$delegate</code> once the modifications have been made.</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="nx">scriptDirective</span><span class="p">.</span><span class="nx">compile</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">attr</span><span class="p">,</span> <span class="nx">transclude</span><span class="p">){</span>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">scriptDirective</span><span class="p">.</span><span class="nx">compile</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">attr</span><span class="p">,</span> <span class="nx">transclude</span><span class="p">){</span>
   <span class="k">if</span><span class="p">(</span><span class="nx">attr</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;text/context-info&#39;</span><span class="p">){</span>
     <span class="kd">var</span> <span class="nx">contextInfo</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">text</span><span class="p">);</span>
 
@@ -428,6 +436,10 @@ is an easy hook available to get the functionality you want without a lot of fus
           
             <a class="btn btn-github" href="https://github.com/jwcarroll" title="GitHub">
               <i class="fa fa-github"></i>
+            </a>
+          
+            <a class="btn btn-rss" href="/rss.xml" title="RSS">
+              <i class="fa fa-rss"></i>
             </a>
           
           </div> <!-- /.socials-footer -->

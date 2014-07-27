@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Sometimes a route change in Angular can take a little while, but using this simple trick you can show a loading indicator while waiting on your view to load.">
+    
+    <meta name="author" content="Josh Carroll">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Google+ Authorship -->
+    <link rel="author" href="https://www.google.com/+JoshCarrollW">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@jwcarroll">
+    
+    <meta name="twitter:description" content="Sometimes a route change in Angular can take a little while, but using this simple trick you can show a loading indicator while waiting on your view to load.">
+    
+    <meta name="twitter:title" content="Easy Loading Indicator When Switching Views In Angular - Techno Fattie">
+
+    <title>Easy Loading Indicator When Switching Views In Angular - Techno Fattie</title>
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C400italic%2C700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-social.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/pygments/syntax.css" rel="stylesheet">
+
+    <!-- HTML5 shiv for IE8 support -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-47962022-1', 'technofattie.com');
+    ga('send', 'pageview');
+
+</script>
+    
+  </head>
+
+  <body itemscope itemtype="http://schema.org/Blog">
+    <meta itemprop="url" content="http://www.technofattie.com" />
+    <meta itemprop="description" content="Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming." />
+    <div id="secondary" class="col-sm-3 sidebar" style="display: none;">
+      <aside>
+
+        <div class="about" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <h4>About <span itemprop="name">Josh Carroll</span></h4>
+          <p itemprop="description">Computer geek, husband, father, theologian. I rock out web sites. I work for <span itemprop="worksFor" itemscope itemtype="http://schema.org/Organization"><a href="http://www.wintellect.com/" itemprop="url"><span itemprop="name">Wintellect</span></a></span>.</p>
+        </div>
+
+        <div class="socialmedia">
+          <h4>Connect</h4>
+          <div class="socials-sidebar">
+          
+            <a class="btn btn-twitter" href="https://twitter.com/jwcarroll" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          
+            <a class="btn btn-linkedin" href="https://www.linkedin.com/in/jwcarroll" title="LinkedIn">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          
+            <a class="btn btn-google-plus" href="https://www.google.com/+JoshCarrollW/posts" title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          
+            <a class="btn btn-github" href="https://github.com/jwcarroll" title="GitHub">
+              <i class="fa fa-github"></i>
+            </a>
+          
+            <a class="btn btn-rss" href="/rss.xml" title="RSS">
+              <i class="fa fa-rss"></i>
+            </a>
+          
+          </div> <!-- /.socials-sidebar -->
+        </div>
+        
+        <div class="tags">
+          <h4>Tags</h4>
+          <ul>
+          
+            <li>
+              <a href="/tags/f%23.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">f#</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/dot-net.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">dot-net</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/c%23.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">c#</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/data-sets.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">data-sets</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/commentary.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">commentary</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/qa.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">qa</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/tdd.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">tdd</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/unit-testing.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">unit-testing</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/security.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">security</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/wpf.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">wpf</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/validation.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">validation</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/programming.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">programming</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/sarcasm.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">sarcasm</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/stackoverflow.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">stackoverflow</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/dynamic.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">dynamic</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/powershell.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">powershell</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/angular.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">angular</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/javascript.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">javascript</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/dependency-injection.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">dependency-injection</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/humor.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">humor</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/jekyll.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">jekyll</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/github.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">github</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/bootstrap.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">bootstrap</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/introspection.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">introspection</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/ng-transform.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">ng-transform</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/directives.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">directives</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/angular-tips.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">angular-tips</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/controller-as.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">controller-as</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/routing.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">routing</span></a>
+            </li>
+          
+          </ul>
+        </div>
+        
+        <div class="sidebar-links">
+         <h4><a href="/archives/">Archives</a></h4>
+        </div>
+        
+        
+        <div>
+            <h4>You Might Also Like:</h4>
+            
+            <h5>
+               <a href="/2014/03/21/five-guidelines-for-avoiding-scope-soup-in-angular.html">5 Guidelines For Avoiding Scope Soup in Angular</a>
+            </h5>
+            
+            <h5>
+               <a href="/2011/02/11/wpf-fancy-winforms.html">WPF != Fancy Winforms</a>
+            </h5>
+            
+            <h5>
+               <a href="/2014/02/15/angular-powered-text-transformations.html">Angular Powered Text Transformations - Part 1</a>
+            </h5>
+            
+            <h5>
+               <a href="/2010/06/25/extending-moq-using-extension-methods.html">Extending Moq Using Extension Methods</a>
+            </h5>
+            
+            <h5>
+               <a href="/2012/01/31/it%27s-the-principal.html">It's The Principal...</a>
+            </h5>
+            
+        </div>
+        
+        
+      </aside>
+    </div> <!-- /#secondary -->
+
+    <div id="primary" class="col-sm-12">
+      <div class="content">
+        
+        <header class="header">
+          <hgroup class="pull-left">
+            <h1 class="site-title">
+              <a rel="home" title="Techno Fattie" href="/">
+                <i class="fa fa-code"></i> <span itemprop="name">Techno Fattie</span>
+              </a>
+            </h1>            
+          </hgroup>
+          <div id="togglesidebar" class="btn btn-primary pull-right">
+            <i class="fa fa-bars"></i>
+          </div>
+        </header> <!-- /header -->
+
+        
+
+<section class="post" itemscope itemtype="http://schema.org/BlogPosting">
+ <header class="entry-header">
+   <img class="entry-avatar" alt="Josh Carroll" height="52" width="52" src="http://www.gravatar.com/avatar/213ff080fa03648f0b71e4f4658a8046.png?s=52">
+   <h1 class="entry-title"><a href="/2014/07/27/easy-loading-indicator-when-switching-views-in-angular.html" itemprop="url"><span itemprop="name">Easy Loading Indicator When Switching Views In Angular</span></a></h1>
+   <p class="entry-meta">
+     Posted on <a class="entry-date" href="/archives/#july-2014"><time itemprop="dateCreated" datetime="2014-07-27T00:00:00-04:00">27 July 2014</time></a> |
+     By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" class="entry-author" href="/about/"><span itemprop="name">Josh Carroll</span></a></span>
+     
+     | Tags 
+     
+     <a href="/tags/angular.html" class="btn btn-default btn-xs"><span itemprop="keywords">angular</span></a>
+     
+     <a href="/tags/javascript.html" class="btn btn-default btn-xs"><span itemprop="keywords">javascript</span></a>
+     
+     <a href="/tags/directives.html" class="btn btn-default btn-xs"><span itemprop="keywords">directives</span></a>
+     
+     <a href="/tags/routing.html" class="btn btn-default btn-xs"><span itemprop="keywords">routing</span></a>
+     
+     
+   </p>
+ </header>
+ <div class="entry-description" itemprop="articleBody">
+   <p>It&#39;s no doubt <strong>Angular is an awesome framework for building modern web applications.</strong> Loading tiny bits of HTML and JSON
+can be amazingly fast, and SPA&#39;s are a great way to give your users a snappy UI without the overbearing
+page refresh of traditional server-side rendering.</p>
+
+<p><strong>However...</strong></p>
+
+<p>Occasionally you need to load more than a little data, and that can present some unfortunate usability issues in
+your application. The good news is that <strong>Angular gives us all the tools we need to solve these issues easily</strong>, but first
+let&#39;s look at some common problems.</p>
+
+<h2>Hurry Up And Wait!</h2>
+
+<p>It&#39;s pretty reasonable for a controller to do some initialization to load data from the server, but sometimes this can
+result in what I like to call the <strong>Fast Route, Slow Controller</strong> problem. This is where the primary data needed for the
+view loads slowly, and the user is left staring at an uninitialized view, wondering if something went wrong.</p>
+
+<p>Imagine we have a simple controller that loads some data and displays it in a table:</p>
+
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">SlowCtrl</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">slowDataService</span><span class="p">){</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">slowDataService</span> <span class="o">=</span> <span class="nx">slowDataService</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="nx">angular</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">SlowCtrl</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">contacts</span><span class="o">:</span><span class="p">[],</span>
+  <span class="nx">init</span><span class="o">:</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">_this</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">slowDataService</span><span class="p">.</span><span class="nx">getContacts</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">contacts</span><span class="p">){</span>
+        <span class="nx">_this</span><span class="p">.</span><span class="nx">contacts</span> <span class="o">=</span> <span class="nx">contacts</span><span class="p">;</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Using this controller in one of our routes would result in a fast route change, but a <strong>there will be a long, uncomfortable
+lag time waiting for the data to load.</strong></p>
+
+<h3 class="plunk-callout">See it in action <i class="fa fa-share fa-rotate-90"></i></h3>
+
+<iframe style="border: 1px solid #999;width: 100%; height: 400px"
+        src="http://embed.plnkr.co/p1xfXHk6ln0iWbx6cmbo/preview" frameborder="0">
+    Loading plunk...
+</iframe>
+
+<p>As you can see, the view loads up pretty quickly, but then we are stuck waiting a long time for the data to load.</p>
+
+<p>You may already be thinking that <strong>using the <code>resolve</code> property on a route is a good way to solve this issue</strong> by letting
+Angular load all the data before showing the view. This certainly puts us on the right track, but leads to our second
+most common problem, <strong>Slow Route, Fast Controller</strong>.</p>
+
+<h2>Is Something Supposed To Be Happening?</h2>
+
+<p>If we move our slow call to a resolve in our route definition like this:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s1">&#39;/route1&#39;</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">templateUrl</span><span class="o">:</span><span class="s1">&#39;route1.html&#39;</span><span class="p">,</span>
+      <span class="nx">controller</span><span class="o">:</span><span class="s1">&#39;slowCtrl&#39;</span><span class="p">,</span>
+      <span class="nx">controllerAs</span><span class="o">:</span><span class="s1">&#39;ctrl&#39;</span>
+      <span class="nx">resolve</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">//Don&#39;t do this in a real app, instead</span>
+        <span class="c1">// use an object that encapsulates this</span>
+        <span class="nx">contacts</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;slowDataService&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">slowDataService</span><span class="p">){</span>
+          <span class="k">return</span> <span class="nx">slowDataService</span><span class="p">.</span><span class="nx">getContacts</span><span class="p">();</span>
+        <span class="p">}]</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+
+<span class="c1">//Now controller has access to contacts on load</span>
+<span class="kd">var</span> <span class="nx">SlowCtrl</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">contacts</span><span class="p">){</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">contacts</span> <span class="o">=</span> <span class="nx">contacts</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Then we can ensure the data is loaded before our controller is instantiated, and the view loaded into the DOM. The issue
+is that <strong>now the painful lag has simply been moved to our route changing</strong>, which leaves users wondering if they clicked
+the button or not.</p>
+
+<h3 class="plunk-callout">See it in action <i class="fa fa-share fa-rotate-90"></i></h3>
+
+<iframe style="border: 1px solid #999;width: 100%; height: 400px"
+        src="http://embed.plnkr.co/uFey5hcPnymF9BF053qC/preview" frameborder="0">
+    Loading plunk...
+</iframe>
+
+<h2>Directives To The Rescue!</h2>
+
+<p>The good news is we can fix this with a simple directive. <strong>Angular has a number of built in events that is publishes
+using the <code>$scope</code> service that you can register handlers with.</strong> It just so happens that the built in <code>$routeProvider</code>
+publishes three different events during routing.</p>
+
+<p><a href="https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeStart">$routeChangeStart</a></p>
+
+<p><a href="https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeSuccess">$routeChangeSuccess</a></p>
+
+<p><a href="https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError">$routeChangeError</a></p>
+
+<p>By tapping into these events, <strong>we can use a directive to hide/show some kind of loading indicator</strong> while waiting on our
+views to load.</p>
+
+<div class="alert alert-danger" role="alert">
+<strong>Warning:</strong> normally referencing <code>$rootScope</code> is an indicator you are doing something wrong, but in this case we need to be able
+to handle these events at the highest level.
+</div>
+
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">routeLoadingIndicator</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$rootScope</span><span class="p">){</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">restrict</span><span class="o">:</span><span class="s1">&#39;E&#39;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span><span class="s2">&quot;&lt;h1 ng-if=&#39;isRouteLoading&#39;&gt;Loading...&lt;/h1&gt;&quot;</span><span class="p">,</span>
+    <span class="nx">link</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">){</span>
+      <span class="nx">scope</span><span class="p">.</span><span class="nx">isRouteLoading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+      <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$routeChangeStart&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">scope</span><span class="p">.</span><span class="nx">isRouteLoading</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">});</span>
+
+      <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$routeChangeSuccess&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">scope</span><span class="p">.</span><span class="nx">isRouteLoading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>Now when we can simply drop this directive into our markup somewhere outside our <code>ng-view</code> and we can <strong>give the user
+immediate feedback that something is happening by showing the loading indicator.</strong> Also, since we publish the state out
+to scope, we can use that to hide any existing view while we wait for the new one to load.</p>
+
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;route</span><span class="na">-loading-indicator</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">ng-if=</span><span class="s">&#39;!isRouteLoading&#39;</span> <span class="na">ng-view</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div>
+
+<h3 class="plunk-callout">See it in action <i class="fa fa-share fa-rotate-90"></i></h3>
+
+<iframe style="border: 1px solid #999;width: 100%; height: 400px"
+        src="http://embed.plnkr.co/TNwjw5hlSc2eYROVV10E/preview" frameborder="0">
+    Loading plunk...
+</iframe>
+
+<h2>Conclusion</h2>
+
+<p><strong>Long load times in between AJAX requests can lead to an awkward user experience</strong>, leaving the user unsure if the application
+is actually doing anything. Angular makes it easy to handle these scenarios using directives.</p>
+
+<p><strong>Using these techniques you can customize the loading experience to suit your needs.</strong> Here is an example using
+<a href="http://fgnass.github.io/spin.js/">spin.js</a> and a few animations to create an interesting transition.</p>
+
+<p><a class="btn btn-danger" href="/demos/angular-route-loading-indicator" target="_blank" rel="nofollow">
+    Live Demo <i class="fa fa-external-link"></i>
+</a></p>
+
+ </div>
+ 
+
+<div class="footer">
+    <h4>Share This Post</h4>
+
+    <div class="socials-footer">
+        <a class="btn btn-twitter" href="http://twitter.com/share?text=Easy Loading Indicator When Switching Views In Angular by @jwcarroll&url=http://www.technofattie.com/2014/07/27/easy-loading-indicator-when-switching-views-in-angular.html" rel="nofollow"
+           onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.technofattie.com/2014/07/27/easy-loading-indicator-when-switching-views-in-angular.html" rel="nofollow"
+           onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+        </a>
+        <a class="btn btn-google-plus" href="https://plus.google.com/share?url=http://www.technofattie.com/2014/07/27/easy-loading-indicator-when-switching-views-in-angular.html" rel="nofollow"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+            <i class="fa fa-google-plus"></i>
+        </a>
+    </div>
+</div>
+</section>
+
+<div class="comments">
+ <div id="disqus_thread"></div>
+ <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'technofattie'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+ <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+        <footer class="footer">
+          <p itemprop="author" itemscope itemtype="http://schema.org/Person">© <a href="/about/" itemprop="url"><span itemprop="name">Josh Carroll</span></a> 2014. All right reserved.</p>
+          <div class="socials-footer">
+          
+            <a class="btn btn-twitter" href="https://twitter.com/jwcarroll" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          
+            <a class="btn btn-linkedin" href="https://www.linkedin.com/in/jwcarroll" title="LinkedIn">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          
+            <a class="btn btn-google-plus" href="https://www.google.com/+JoshCarrollW/posts" title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          
+            <a class="btn btn-github" href="https://github.com/jwcarroll" title="GitHub">
+              <i class="fa fa-github"></i>
+            </a>
+          
+            <a class="btn btn-rss" href="/rss.xml" title="RSS">
+              <i class="fa fa-rss"></i>
+            </a>
+          
+          </div> <!-- /.socials-footer -->
+        </footer> <!-- /footer -->
+
+      </div>
+    </div> <!-- /#primary -->
+
+    <!-- Scripts -->
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/custom.js"></script>
+
+  </body>
+</html>

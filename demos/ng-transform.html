@@ -26,6 +26,8 @@
     <link href="/css/main.css" rel="stylesheet">
     <link href="/css/pygments/syntax.css" rel="stylesheet">
 
+    
+
     <!-- HTML5 shiv for IE8 support -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -45,22 +47,21 @@
     
 </head>
 
-<body itemscope itemtype="http://schema.org/Blog">
-<meta itemprop="url" content="http://www.technofattie.com" />
-<meta itemprop="description" content="Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming." />
+<body>
+
+<nav class="demo-nav navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" title="Techno Fattie" href="/demos">
+                <span class="text-danger"><i class="fa fa-code"></i> Techno Fattie - Demos</span>
+            </a>
+        </div>
+        
+    </div>
+</nav>
 
 <div id="primary" class="col-sm-12">
-    <div class="content">
-
-        <header class="header">
-            <hgroup class="pull-left">
-                <h1 class="site-title">
-                    <a rel="home" title="Techno Fattie" href="/">
-                        <i class="fa fa-code"></i> <span itemprop="name">Techno Fattie</span>
-                    </a>
-                </h1>
-            </hgroup>
-        </header> <!-- /header -->
+    <div class="content demo-medium">
 
         <a href="https://github.com/jwcarroll/ng-transform"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 <!--[if lt IE 7]>
@@ -98,6 +99,10 @@
                     <i class="fa fa-github"></i>
                 </a>
                 
+                <a class="btn btn-rss" href="/rss.xml" title="RSS">
+                    <i class="fa fa-rss"></i>
+                </a>
+                
             </div> <!-- /.socials-footer -->
         </footer> <!-- /footer -->
 
@@ -107,6 +112,8 @@
 <!-- Scripts -->
 <script src="/js/jquery-1.11.0.min.js"></script>
 <script src="/js/custom.js"></script>
+
+
 
 </body>
 </html>

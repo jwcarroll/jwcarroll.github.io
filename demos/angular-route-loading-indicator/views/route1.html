@@ -1,0 +1,17 @@
+<h1>{{ctrl.message}}</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Blog</th>
+      <th>Twitter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='contact in ctrl.contacts'>
+      <td>{{contact.name}}</td>
+      <td>{{contact.blog}}</td>
+      <td>{{contact.twitter}}</td>
+    </tr>
+  </tbody>
+</table>

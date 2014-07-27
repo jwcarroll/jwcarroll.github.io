@@ -343,6 +343,37 @@ ul.archive-list {
     color: #d9534f;
 }
 
+.plunk-callout {
+    position: relative;
+    font-weight: bold;
+    color:#d2322d;
+}
+h1.plunk-callout,
+h2.plunk-callout,
+h3.plunk-callout,
+h4.plunk-callout{
+    margin-bottom: 20px;
+}
+.plunk-callout i {
+    top: 50%;
+    position: absolute;
+    margin-left: 5px;
+}
+
+.demo-header{
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.demo-medium{
+    font-size: 1.4em;
+    margin-top: 10px;
+}
+
+.demo-nav{
+    text-transform: uppercase;
+}
+
 /* Pre overrides for Twitter Bootstrap */
 pre {
     display: block;
@@ -365,3 +396,7 @@ pre {
         font-size: 1em;
     }
 }
+
+.btn-rss{color:#fff;background-color: #f79839;border-color:rgba(0,0,0,0.2)}.btn-rss:hover,.btn-rss:focus,.btn-rss:active,.btn-rss.active,.open .dropdown-toggle.btn-rss{color:#fff;background-color: #f79839;border-color:rgba(0,0,0,0.2)}
+.btn-rss:active,.btn-rss.active,.open .dropdown-toggle.btn-rss{background-image:none}
+.btn-rss.disabled,.btn-rss[disabled],fieldset[disabled] .btn-rss,.btn-rss.disabled:hover,.btn-rss[disabled]:hover,fieldset[disabled] .btn-rss:hover,.btn-rss.disabled:focus,.btn-rss[disabled]:focus,fieldset[disabled] .btn-rss:focus,.btn-rss.disabled:active,.btn-rss[disabled]:active,fieldset[disabled] .btn-rss:active,.btn-rss.disabled.active,.btn-rss[disabled].active,fieldset[disabled] .btn-rss.active{background-color: #f79839;border-color:rgba(0,0,0,0.2)}

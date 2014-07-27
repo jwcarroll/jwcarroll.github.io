@@ -9,7 +9,18 @@
     <link>http://www.technofattie.com</link>
     <description>Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming.</description>
     <copyright>2014 Josh Carroll All rights reserved</copyright>
-    <pubDate>Tue, 01 Jul 2014 00:00:00 -0400</pubDate>
+    <pubDate>Sun, 27 Jul 2014 00:00:00 -0400</pubDate>
+    <item>
+      <title>Easy Loading Indicator When Switching Views In Angular</title>
+      <link>http://www.technofattie.com/2014/07/27/easy-loading-indicator-when-switching-views-in-angular.html</link>
+      <description>&lt;p&gt;It&amp;#39;s no doubt &lt;strong&gt;Angular is an awesome framework for building modern web applications.&lt;/strong&gt; Loading tiny bits of HTML and JSON
+can be amazingly fast, and SPA&amp;#39;s are a great way to give your users a snappy UI without the overbearing
+page refresh of traditional server-side rendering.&lt;/p&gt;
+</description>
+      <pubDate>Sun, 27 Jul 2014 00:00:00 -0400</pubDate>
+      <guid>http://www.technofattie.com/2014/07/27/easy-loading-indicator-when-switching-views-in-angular.html</guid>
+      <dc:date>2014-07-27T00:00:00-04:00</dc:date>
+    </item>
     <item>
       <title>Using Angular Forms With Controller As Syntax</title>
       <link>http://www.technofattie.com/2014/07/01/using-angular-forms-with-controller-as-syntax.html</link>
@@ -236,6 +247,6 @@ to be pretty easy, but not obvious.&lt;/p&gt;
       <guid>http://www.technofattie.com/2007/12/22/mandelbrot-bitmap.html</guid>
       <dc:date>2007-12-22T00:00:00-05:00</dc:date>
     </item>
-    <dc:date>2014-07-01T00:00:00-04:00</dc:date>
+    <dc:date>2014-07-27T00:00:00-04:00</dc:date>
   </channel>
 </rss>
