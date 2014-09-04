@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="description" content="Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming.">
+    <meta name="description" content="If you could ask a single question to a candidate to quickly assess their knowledge of JavaScript, what would it be? What if there were a 10 line snippet of code you could use to immediately determine if a candidate was a beginner, intermediate, or advanced JavaScript practitioner?
+">
     
     <meta name="author" content="Josh Carroll">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -18,11 +19,12 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@jwcarroll">
     
-    <meta name="twitter:description" content="Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming.">
+    <meta name="twitter:description" content="If you could ask a single question to a candidate to quickly assess their knowledge of JavaScript, what would it be? What if there were a 10 line snippet of code you could use to immediately determine if a candidate was a beginner, intermediate, or advanced JavaScript practitioner?
+">
     
-    <meta name="twitter:title" content="It's The Principal... - Techno Fattie">
+    <meta name="twitter:title" content="The Best JavaScript Interview Question - Techno Fattie">
 
-    <title>It's The Principal... - Techno Fattie</title>
+    <title>The Best JavaScript Interview Question - Techno Fattie</title>
 
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C400italic%2C700" rel="stylesheet">
@@ -230,15 +232,7 @@
             <h4>You Might Also Like:</h4>
             
             <h5>
-               <a href="/2011/04/08/unit-testing-and-declarative-security-part-2.html">Unit Testing and Declarative Security, Part 2</a>
-            </h5>
-            
-            <h5>
-               <a href="/2011/09/23/solving-ayende%27s-tax-woes.html">Solving Ayende's Tax Woes</a>
-            </h5>
-            
-            <h5>
-               <a href="/2010/06/25/extending-moq-using-extension-methods.html">Extending Moq Using Extension Methods</a>
+               <a href="/2014/03/21/five-guidelines-for-avoiding-scope-soup-in-angular.html">5 Guidelines For Avoiding Scope Soup in Angular</a>
             </h5>
             
             <h5>
@@ -246,7 +240,15 @@
             </h5>
             
             <h5>
-               <a href="/2011/02/09/unit-testing-and-declarative-security-part-1.html">Unit Testing and Declarative Security, Part 1</a>
+               <a href="/2010/06/25/extending-moq-using-extension-methods.html">Extending Moq Using Extension Methods</a>
+            </h5>
+            
+            <h5>
+               <a href="/2014/02/11/slaying-the-dragons-of-self-defeat.html">Slaying The Dragons of Self Defeat</a>
+            </h5>
+            
+            <h5>
+               <a href="/2011/09/23/solving-ayende%27s-tax-woes.html">Solving Ayende's Tax Woes</a>
             </h5>
             
         </div>
@@ -276,28 +278,185 @@
 <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
  <header class="entry-header">
    <img class="entry-avatar" alt="Josh Carroll" height="52" width="52" src="http://www.gravatar.com/avatar/213ff080fa03648f0b71e4f4658a8046.png?s=52">
-   <h1 class="entry-title"><a href="/2012/01/31/it%27s-the-principal.html" itemprop="url"><span itemprop="name">It's The Principal...</span></a></h1>
+   <h1 class="entry-title"><a href="/2014/09/03/the-best-javascript-interview-question.html" itemprop="url"><span itemprop="name">The Best JavaScript Interview Question</span></a></h1>
    <p class="entry-meta">
-     Posted on <a class="entry-date" href="/archives/#january-2012"><time itemprop="dateCreated" datetime="2012-01-31T00:00:00-05:00">31 January 2012</time></a> |
+     Posted on <a class="entry-date" href="/archives/#september-2014"><time itemprop="dateCreated" datetime="2014-09-03T00:00:00-04:00">03 September 2014</time></a> |
      By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" class="entry-author" href="/about/"><span itemprop="name">Josh Carroll</span></a></span>
      
      | Tags 
      
-     <a href="/tags/c%23.html" class="btn btn-default btn-xs"><span itemprop="keywords">c#</span></a>
+     <a href="/tags/javascript.html" class="btn btn-default btn-xs"><span itemprop="keywords">javascript</span></a>
      
-     <a href="/tags/dot-net.html" class="btn btn-default btn-xs"><span itemprop="keywords">dot-net</span></a>
-     
-     <a href="/tags/security.html" class="btn btn-default btn-xs"><span itemprop="keywords">security</span></a>
-     
-     <a href="/tags/unit-testing.html" class="btn btn-default btn-xs"><span itemprop="keywords">unit-testing</span></a>
-     
-     <a href="/tags/tdd.html" class="btn btn-default btn-xs"><span itemprop="keywords">tdd</span></a>
+     <a href="/tags/interviews.html" class="btn btn-default btn-xs"><span itemprop="keywords">interviews</span></a>
      
      
    </p>
  </header>
  <div class="entry-description" itemprop="articleBody">
-   In ancient times... at least according to web standards, I wrote a <a href="http://technofattie.blogspot.com/2011/02/unit-testing-and-declarative-security.html"">couple of posts</a> about <a href="http://technofattie.blogspot.com/2011/04/unit-testing-and-declarative-security.html">unit testing with declarative security attributes</a>. It turns out that while using declarative security is pretty awesome, it's clear <i>nobody</i>&nbsp;was thinking about people doing TDD :(<div><br /></div><div>Getting around this was easy enough by simply overriding the <a href="http://msdn.microsoft.com/en-us/library/system.threading.thread.currentprincipal.aspx">Principal</a> using the built in <a href="http://msdn.microsoft.com/en-us/library/system.security.principal.genericprincipal.aspx">GenericPrincipal</a> and <a href="http://msdn.microsoft.com/en-us/library/system.security.principal.genericidentity.aspx">GenericIdentity</a> classes. We even refactored the security setup code into the Initialize method for our unit tests. However, <b>we still had to think about security for every test class!</b></div><div><b><br /></b></div><div>I can tell you right now that that is a big fat suck! I don't want to see <i>any</i>&nbsp;security related code in my unit test because <b>I'm not testing security right now!</b>&nbsp;What I really want is for my test to look like this and just work.</div><div><br /></div><div><pre><code>[TestMethod]<br />public void ShouldGetSuperSecretFromAgent()<br />{<br />    var agent = new SecretAgent();<br /><br />    //This line will esplode!!!<br />    var secret = agent.GetSuperSecretStuff();<br /><br />    Assert.IsNotNull(secret);<br />}<br /></code></pre></div><div><br /></div><div>Fortunately, we still have one last trick up our sleeve that we can use to solve our problem once and for all. Writing a custom implementation of <a href="http://msdn.microsoft.com/en-us/library/system.security.principal.iprincipal.aspx">IPrincipal</a> and <a href="http://msdn.microsoft.com/en-us/library/system.security.principal.iidentity.aspx">IIdentity</a>. This is so braindead simple, that I'm not even going to explain it... just show you the code.</div><div><br /></div><div><pre><code><br />public class StubPrincipal: IPrincipal, IIdentity<br />{<br />    public StubPrincipal(String name = "TestUser", Boolean isAuthenticated = true, String authenticationType = "Fake")<br />    {<br />        Name = name;<br />        IsAuthenticated = isAuthenticated;<br />        AuthenticationType = authenticationType;<br />    }<br /><br />    //IPrincipal Members<br />    public IIdentity Identity<br />    {<br />        get { return this; }<br />    }<br /><br />    public bool IsInRole(string role)<br />    {<br />        return true;<br />    }<br /><br />    //IIdentity Members<br />    public string AuthenticationType { get; set; }<br /><br />    public bool IsAuthenticated { get; set; }<br /><br />    public string Name { get; set; }<br />}</code></pre></div><div><br /></div><div>This still leaves the business of wiring it all up. Since the whole point of this refactoring was to <i>not</i>&nbsp;have to worry about doing this for every test!</div><div><br /></div><div><b>All your base class are belong to us!</b></div><div><b><br /></b></div><div>The simplest approach I can think of is to create a base class that will wire up your custom <b>StubPrincipal</b> object in the constructor, and then derive all your test classes from it. Again, this is so braindead simple... just look at the code.</div><div><br /></div><div><pre><code><br />public class SecurityEnabledTest<br />{<br />    protected StubPrincipal Principal = new StubPrincipal();<br /><br />    public SecurityEnabledTest()<br />    {<br />        Thread.CurrentPrincipal = Principal;<br />    }<br />}<br /></code></pre></div><div><br /></div><div>And now our goal above is reached with one tiny modification.</div><div><br /></div><div><pre><code><br />[TestClass]<br />public class SecretAgentBehavior_UsingBaseClass: SecurityEnabledTest<br />{<br />    [TestMethod]<br />    [Description("Test relying on base class to set principal")]<br />    public void ShouldGetSuperSecretFromAgent()<br />    {<br />        var agent = new SecretAgent();<br /><br />        //It works... WOOT!<br />        var secret = agent.GetSuperSecretStuff();<br /><br />        Assert.IsNotNull(secret);<br />    }<br />}<br /></code></pre></div><div><br /></div><div>Voila! Now you can go on your merry little way and focus on the actual method behavior instead of the security meta-data.</div><div><br /></div><div><b>But Wait! There is even more awesome!</b></div><div><b><br /></b></div><div>If you are thinking to yourself "Ok, that is great dude, but what if I actually want to test MY FREAKING SECURITY!"</div><div><br /></div><div>I've got you covered. Here is a slightly <a href="https://gist.github.com/1708922">more robust Principal object</a> that will give you a lot more control over how it behaves, which should cover any testing scenario you can think of. It allows you to add roles, and has three modes of operation:</div><div><ol><li>Always Return True</li><li>Whitelist</li><ol><li>This is how a normal principal operates. If the role is in the list, then you get access.</li></ol><li>Blacklist</li><ol><li>This works opposite to a normal principal. If the role is in the list, then you get denied access. This is useful for when there are multiple roles needed to perform an action (think nested calls), and you want to see how your code behaves when the user <i>doesn't</i>&nbsp;have one of them.</li></ol></ol><div>In the end I hope this helps unit testing efforts, and maybe demystifies the Principal/Identity objects a little bit. You can even use these same techniques to write your own custom security Principal for actual production uses. The concepts are identical.</div></div><div><br /></div><div>Cheers,</div><div>Josh</div>
+   <h3>Everybody is <em>doing</em> JavaScript these days</h3>
+
+<p>But considering the barrier to entry is so low, it can be enormously difficult to gauge a persons skill by simply asking them.
+<strong>This is a particularly difficult problem when conducting an interview.</strong></p>
+
+<p><strong>For those whose native language is not JavaScript</strong>, they might say they really know it well, when in fact they
+only know a little bit of jQuery. <strong>For those who have only ever done JS</strong>, they might rate themselves much lower than the
+former crowd, when in fact they could code circles around them in JavaScript.</p>
+
+<h3>What you need is a barometer</h3>
+
+<p>A way to very quickly determine just how in depth a candidates knowledge of JavaScript goes.</p>
+
+<p><strong><em>Does such a magical question exist?</em></strong></p>
+
+<p>Well... there is obviously no silver bullet, but I think this little 10 line snippet comes pretty close. Look it over,
+and I&#39;ll explain why I think it works.</p>
+
+<blockquote>
+<h4>What does the following code do? And why?</h4>
+</blockquote>
+
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">falseStr</span> <span class="o">=</span> <span class="s2">&quot;false&quot;</span><span class="p">;</span>
+
+<span class="k">if</span><span class="p">(</span><span class="kc">true</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">falseStr</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nx">falseStr</span><span class="p">){</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;false&quot;</span> <span class="o">==</span> <span class="kc">true</span><span class="p">);</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;false&quot;</span> <span class="o">==</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3>No Peeking!</h3>
+
+<p><em>Do you know the answer?</em></p>
+
+<p><em>Do you know why?</em></p>
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Click Here to Reveal The Answer...
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+        <p>When the above script is executed it will actually print out the following:</p>
+        <kbd>false</kbd>
+        <br />
+        <kbd>false</kbd>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>JavaScript is weird man</h3>
+
+<p>If you didn&#39;t already know the answer did it surprise you?</p>
+
+<p>This is a deceptively simple question, but there are <strong>four very fundamental concepts</strong> being demonstrated in this tiny example.</p>
+
+<h3>Hoisting and Scoping</h3>
+
+<p><strong><a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">Hoisting is one of the more esoteric and tricky aspects of JavaScript</a></strong>, but important to understand nonetheless. It dictates
+how your code will actually be interpreted by the compiler and executed. Variable, and function definitions will all get
+pulled up to the top of their respective scope <strong><em>before their assignments.</em></strong></p>
+
+<p>This means that the above code will actually be interpreted like this:</p>
+
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="kd">var</span> <span class="nx">falseStr</span><span class="p">;</span>
+<span class="nx">falseStr</span> <span class="o">=</span> <span class="s2">&quot;false&quot;</span><span class="p">;</span>
+
+<span class="k">if</span><span class="p">(</span><span class="kc">true</span><span class="p">){</span>
+  <span class="c1">//var moved to top</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Without that tidbit of knowledge you might be inclined to think that <code>falseStr</code> starts off as a global variable
+and then gets redefined within the first if block.</p>
+
+<p>The second concept important to understanding this is that <strong><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions">JavaScript doesn&#39;t have block level scope, it has function
+level scope</a>.</strong> So despite the <code>var falseStr;</code> appearing inside an if block, it is scoped outside of that
+block to either the containing function, or in this case, the global scope.</p>
+
+<h3>Type Coercion: Boolean Expressions</h3>
+
+<p><strong>Type Coercion is a feature of JavaScript</strong>, and one that people talk about in almost mystical terms... as though the rules
+for boolean expressions and comparisons were not well known, but rather mysterious and subject to the whims of the runtime
+on any particular day.</p>
+
+<p>The truth is (no pun intended) that <strong>the rules are well known, and <a href="http://www.ecma-international.org/ecma-262/5.1/#sec-12.5">documented for anybody who cares to read them</a>.</strong></p>
+
+<p>A boolean expression is coerced into a boolean value using a system level function that has explicit rules for what will
+evaluate to true and false. This is what is called <strong>truthy</strong> and <strong>falsey</strong> values in JavaScript.</p>
+
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">//truthy values</span>
+<span class="kd">var</span> <span class="nx">truthyValues</span> <span class="o">=</span> <span class="p">[</span><span class="kc">true</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;nonEmptyString&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;Just an object&#39;</span><span class="p">}];</span>
+
+<span class="c1">//falsey values</span>
+<span class="kd">var</span> <span class="nx">falseyValues</span> <span class="o">=</span> <span class="p">[</span><span class="kc">false</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">];</span>
+</code></pre></div>
+
+<p>If we were to explicitly convert our variable to a Boolean, you would see that <strong>the non-empty string converts to true.</strong></p>
+
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="kd">var</span> <span class="nx">falseStr</span> <span class="o">=</span> <span class="s2">&quot;false&quot;</span><span class="p">;</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">(</span><span class="nx">falseStr</span><span class="p">)){</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>Type Coercion: Loose Comparison</h3>
+
+<p><strong>However, when doing a comparison using double equals (<code>==</code>) then the rules are slightly different.</strong> If you want
+to know all the rules you can <a href="http://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3">read about them here</a>, but for our purposes you only need to know that when JavaScript does
+a loose comparison on a <code>Boolean</code> and a <code>String</code>, it attempts to convert them both to a <code>Number</code>
+before doing a strict comparison.</p>
+
+<p>If we rewrite the code snippet to be explicit, then <strong>it makes complete sense why both comparisons fail.</strong></p>
+
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="s2">&quot;false&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="nb">Number</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
+<span class="c1">//console.log(NaN == 1);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="s2">&quot;false&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="nb">Number</span><span class="p">(</span><span class="kc">false</span><span class="p">));</span>
+<span class="c1">//console.log(NaN == 0);</span>
+</code></pre></div>
+
+<p>Clearly NaN does not equal 1, and NaN also does not equal 0.</p>
+
+<h3>Just Use === You Idiot!</h3>
+
+<p>It&#39;s true that always using strict comparison would allow you to avoid the aforementioned headaches, but this is about
+why. <strong>The reason Douglas Crockford put this rule into JSLint is because he understands the rules.</strong></p>
+
+<p>If you can&#39;t explain why you always use strict equality comparison then you are guilty of <a href="http://en.wikipedia.org/wiki/Cargo_cult_programming">cargo cult programming</a>.</p>
+
+<h3>You are an @#%<em>&amp;</em>!</h3>
+
+<p>At this point you may be thinking I&#39;m just a big jerk who likes to throw tricky questions at candidates just to make them
+feel bad and make myself look smart.</p>
+
+<p>That&#39;s a fair criticism, but unfounded. <strong>I would never use a question like this to base a hiring decision off of</strong>, but if a
+candidate tells me they are an 8 in JavaScript... then they should be able to nail this question. <strong>It&#39;s meant to be a quick
+calibration of depth of knowledge in the JavaScript language</strong>. Nothing more. Nothing less.</p>
+
+<p>I would also never ask this question without first explaining what the intent was. <strong>It&#39;s meant to be a starting point for
+a conversation, not a pass/fail gatekeeper.</strong></p>
+
+<h3>Conclusion</h3>
+
+<p>I like it because although the code is tricky, <strong>it&#39;s still simple enough that you don&#39;t have to stare at it for twenty
+minutes</strong> trying to figure out what it does.</p>
+
+<p><strong>I like it because it covers some core language features</strong> that are important for anybody doing heavy JavaScript programming.
+It&#39;s not exhaustive, but it is deep enough that if you nail it, there is a good chance you have taken the time to really
+study the language.</p>
+
+<p>You may think questions like this are gimmicky, but I can guarantee if you are interviewing someone and they nail this
+question, then <strong>they have done more than just written a few lines of jQuery.</strong></p>
 
  </div>
  
@@ -306,15 +465,15 @@
     <h4>Share This Post</h4>
 
     <div class="socials-footer">
-        <a class="btn btn-twitter" href="http://twitter.com/share?text=It's The Principal... by @jwcarroll&url=http://www.technofattie.com/2012/01/31/it%27s-the-principal.html" rel="nofollow"
+        <a class="btn btn-twitter" href="http://twitter.com/share?text=The Best JavaScript Interview Question by @jwcarroll&url=http://www.technofattie.com/2014/09/03/the-best-javascript-interview-question.html" rel="nofollow"
            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
             <i class="fa fa-twitter"></i>
         </a>
-        <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.technofattie.com/2012/01/31/it%27s-the-principal.html" rel="nofollow"
+        <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.technofattie.com/2014/09/03/the-best-javascript-interview-question.html" rel="nofollow"
            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
             <i class="fa fa-facebook"></i>
         </a>
-        <a class="btn btn-google-plus" href="https://plus.google.com/share?url=http://www.technofattie.com/2012/01/31/it%27s-the-principal.html" rel="nofollow"
+        <a class="btn btn-google-plus" href="https://plus.google.com/share?url=http://www.technofattie.com/2014/09/03/the-best-javascript-interview-question.html" rel="nofollow"
            onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
             <i class="fa fa-google-plus"></i>
         </a>
@@ -374,6 +533,8 @@
     <script src="/js/custom.js"></script>
 
     
+    
+    <script src="/js/bootstrap.min.js"></script>
     
     
 

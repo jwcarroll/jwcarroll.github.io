@@ -9,7 +9,16 @@
     <link>http://www.technofattie.com</link>
     <description>Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming.</description>
     <copyright>2014 Josh Carroll All rights reserved</copyright>
-    <pubDate>Sun, 27 Jul 2014 00:00:00 -0400</pubDate>
+    <pubDate>Wed, 03 Sep 2014 00:00:00 -0400</pubDate>
+    <item>
+      <title>The Best JavaScript Interview Question</title>
+      <link>http://www.technofattie.com/2014/09/03/the-best-javascript-interview-question.html</link>
+      <description>&lt;h3&gt;Everybody is &lt;em&gt;doing&lt;/em&gt; JavaScript these days&lt;/h3&gt;
+</description>
+      <pubDate>Wed, 03 Sep 2014 00:00:00 -0400</pubDate>
+      <guid>http://www.technofattie.com/2014/09/03/the-best-javascript-interview-question.html</guid>
+      <dc:date>2014-09-03T00:00:00-04:00</dc:date>
+    </item>
     <item>
       <title>Easy Loading Indicator When Switching Views In Angular</title>
       <link>http://www.technofattie.com/2014/07/27/easy-loading-indicator-when-switching-views-in-angular.html</link>
@@ -249,6 +258,6 @@ was simple, straightforward and to the point.&lt;/p&gt;
       <guid>http://www.technofattie.com/2007/12/22/mandelbrot-bitmap.html</guid>
       <dc:date>2007-12-22T00:00:00-05:00</dc:date>
     </item>
-    <dc:date>2014-07-27T00:00:00-04:00</dc:date>
+    <dc:date>2014-09-03T00:00:00-04:00</dc:date>
   </channel>
 </rss>
