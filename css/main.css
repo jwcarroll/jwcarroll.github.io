@@ -400,3 +400,7 @@ pre {
 .btn-rss{color:#fff;background-color: #f79839;border-color:rgba(0,0,0,0.2)}.btn-rss:hover,.btn-rss:focus,.btn-rss:active,.btn-rss.active,.open .dropdown-toggle.btn-rss{color:#fff;background-color: #f79839;border-color:rgba(0,0,0,0.2)}
 .btn-rss:active,.btn-rss.active,.open .dropdown-toggle.btn-rss{background-image:none}
 .btn-rss.disabled,.btn-rss[disabled],fieldset[disabled] .btn-rss,.btn-rss.disabled:hover,.btn-rss[disabled]:hover,fieldset[disabled] .btn-rss:hover,.btn-rss.disabled:focus,.btn-rss[disabled]:focus,fieldset[disabled] .btn-rss:focus,.btn-rss.disabled:active,.btn-rss[disabled]:active,fieldset[disabled] .btn-rss:active,.btn-rss.disabled.active,.btn-rss[disabled].active,fieldset[disabled] .btn-rss.active{background-color: #f79839;border-color:rgba(0,0,0,0.2)}
+
+.example-code {
+    padding: 20px;
+}

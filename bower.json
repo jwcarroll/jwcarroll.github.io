@@ -1,0 +1,28 @@
+{
+  "name": "TechnoFattieBlog",
+  "version": "0.0.0",
+  "homepage": "http://www.technofattie.com",
+  "authors": [
+    "Josh Carroll <jwarren.carroll@gmail.com>"
+  ],
+  "description": "My Jekyll project to build www.technofattie.com",
+  "keywords": [
+    "jekyll",
+    "blog"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.8",
+    "angular-animate": "~1.3.8",
+    "angular-route": "~1.3.8"
+  }
+}

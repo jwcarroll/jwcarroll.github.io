@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming.">
+    
+    <meta name="author" content="Josh Carroll">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Google+ Authorship -->
+    <link rel="author" href="https://www.google.com/+JoshCarrollW">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@jwcarroll">
+    
+    <meta name="twitter:description" content="Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming.">
+    
+    <meta name="twitter:title" content="Another Angular Loading Indicator Directive - Techno Fattie">
+
+    <title>Another Angular Loading Indicator Directive - Techno Fattie</title>
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C400italic%2C700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-social.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/pygments/syntax.css" rel="stylesheet">
+
+    <!-- HTML5 shiv for IE8 support -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-47962022-1', 'technofattie.com');
+    ga('send', 'pageview');
+
+</script>
+    
+  </head>
+
+  <body itemscope itemtype="http://schema.org/Blog">
+    <meta itemprop="url" content="http://www.technofattie.com" />
+    <meta itemprop="description" content="Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming." />
+    <div id="secondary" class="col-sm-3 sidebar" style="display: none;">
+      <aside>
+
+        <div class="about" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <h4>About <span itemprop="name">Josh Carroll</span></h4>
+          <p itemprop="description">Computer geek, husband, father, theologian. I rock out web sites. I work for <span itemprop="worksFor" itemscope itemtype="http://schema.org/Organization"><a href="http://www.wintellect.com/" itemprop="url"><span itemprop="name">Wintellect</span></a></span>.</p>
+        </div>
+
+        <div class="socialmedia">
+          <h4>Connect</h4>
+          <div class="socials-sidebar">
+          
+            <a class="btn btn-twitter" href="https://twitter.com/jwcarroll" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          
+            <a class="btn btn-linkedin" href="https://www.linkedin.com/in/jwcarroll" title="LinkedIn">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          
+            <a class="btn btn-google-plus" href="https://www.google.com/+JoshCarrollW/posts" title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          
+            <a class="btn btn-github" href="https://github.com/jwcarroll" title="GitHub">
+              <i class="fa fa-github"></i>
+            </a>
+          
+            <a class="btn btn-rss" href="/rss.xml" title="RSS">
+              <i class="fa fa-rss"></i>
+            </a>
+          
+          </div> <!-- /.socials-sidebar -->
+        </div>
+        
+        <div class="tags">
+          <h4>Tags</h4>
+          <ul>
+          
+            <li>
+              <a href="/tags/f%23.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">f#</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/dot-net.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">dot-net</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/c%23.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">c#</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/data-sets.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">data-sets</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/commentary.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">commentary</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/qa.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">qa</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/tdd.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">tdd</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/unit-testing.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">unit-testing</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/security.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">security</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/wpf.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">wpf</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/validation.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">validation</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/programming.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">programming</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/sarcasm.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">sarcasm</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/stackoverflow.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">stackoverflow</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/dynamic.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">dynamic</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/powershell.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">powershell</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/angular.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">angular</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/javascript.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">javascript</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/dependency-injection.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">dependency-injection</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/humor.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">humor</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/jekyll.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">jekyll</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/github.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">github</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/bootstrap.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">bootstrap</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/introspection.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">introspection</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/ng-transform.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">ng-transform</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/directives.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">directives</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/angular-tips.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">angular-tips</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/controller-as.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">controller-as</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/routing.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">routing</span></a>
+            </li>
+          
+            <li>
+              <a href="/tags/interviews.html" class="tag btn btn-tag btn-sm"><span itemprop="keywords">interviews</span></a>
+            </li>
+          
+          </ul>
+        </div>
+        
+        <div class="sidebar-links">
+         <h4><a href="/archives/">Archives</a></h4>
+        </div>
+        
+        
+        <div>
+            <h4>You Might Also Like:</h4>
+            
+            <h5>
+               <a href="/2011/02/11/wpf-fancy-winforms.html">WPF != Fancy Winforms</a>
+            </h5>
+            
+            <h5>
+               <a href="/2014/03/21/five-guidelines-for-avoiding-scope-soup-in-angular.html">5 Guidelines For Avoiding Scope Soup in Angular</a>
+            </h5>
+            
+            <h5>
+               <a href="/2014/02/15/angular-powered-text-transformations.html">Angular Powered Text Transformations - Part 1</a>
+            </h5>
+            
+            <h5>
+               <a href="/2014/07/27/easy-loading-indicator-when-switching-views-in-angular.html">Easy Loading Indicator When Switching Views In Angular</a>
+            </h5>
+            
+            <h5>
+               <a href="/2014/09/03/the-best-javascript-interview-question.html">The Best JavaScript Interview Question</a>
+            </h5>
+            
+        </div>
+        
+        
+      </aside>
+    </div> <!-- /#secondary -->
+
+    <div id="primary" class="col-sm-12">
+      <div class="content">
+        
+        <header class="header">
+          <hgroup class="pull-left">
+            <h1 class="site-title">
+              <a rel="home" title="Techno Fattie" href="/">
+                <i class="fa fa-code"></i> <span itemprop="name">Techno Fattie</span>
+              </a>
+            </h1>            
+          </hgroup>
+          <div id="togglesidebar" class="btn btn-primary pull-right">
+            <i class="fa fa-bars"></i>
+          </div>
+        </header> <!-- /header -->
+
+        
+
+<section class="post" itemscope itemtype="http://schema.org/BlogPosting">
+ <header class="entry-header">
+   <img class="entry-avatar" alt="Josh Carroll" height="52" width="52" src="http://www.gravatar.com/avatar/213ff080fa03648f0b71e4f4658a8046.png?s=52">
+   <h1 class="entry-title"><a href="/2015/01/09/another-angular-loading-indicator.html" itemprop="url"><span itemprop="name">Another Angular Loading Indicator Directive</span></a></h1>
+   <p class="entry-meta">
+     Posted on <a class="entry-date" href="/archives/#january-2015"><time itemprop="dateCreated" datetime="2015-01-09T00:00:00-05:00">09 January 2015</time></a> |
+     By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" class="entry-author" href="/about/"><span itemprop="name">Josh Carroll</span></a></span>
+     
+     | Tags 
+     
+     <a href="/tags/angular.html" class="btn btn-default btn-xs"><span itemprop="keywords">angular</span></a>
+     
+     <a href="/tags/javascript.html" class="btn btn-default btn-xs"><span itemprop="keywords">javascript</span></a>
+     
+     <a href="/tags/directives.html" class="btn btn-default btn-xs"><span itemprop="keywords">directives</span></a>
+     
+     
+   </p>
+ </header>
+ <div class="entry-description" itemprop="articleBody">
+   <h3>How Do I Show A Loading Indicator In Angular?</h3>
+
+<p>It&#39;s a question I run into a lot actually.</p>
+
+<p>To be fair, there are a million different types of loading indicators and ways to use them,
+but most often, <strong>developers are looking for a simple solution</strong>. They need a little spinner
+next to a label... or inside a button.</p>
+
+<p>Again, nothing fancy, but <strong>it does need to be flexible.</strong></p>
+
+<p>In it&#39;s simplest form, a loading indicator can be accomplished in Angular with a combination of
+<code>ng-show</code> and a simple boolean field on your controller.</p>
+
+<p>Using Bootstrap and Font Awesome classes the markup might look something like this:</p>
+
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="c">&lt;!-- simple spinning cog icon --&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;fa fa-cog fa-spin ng-hide&quot;</span> <span class="na">ng-show=</span><span class="s">&quot;ctrl.isBusy&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
+</code></pre></div>
+<p>And here is an example of <strong>using it inside a button</strong></p>
+
+<div class="example-code" data-example-name="simple-boolean-example" ng-controller="simpleBooleanController as ctrl">
+  <button type="button"
+    class="btn btn-lg btn-primary"
+    ng-click="ctrl.makeCall(2000)"
+    ng-disabled="ctrl.isBusy">Slow Call <i class="fa fa-cog fa-spin ng-hide" ng-show="ctrl.isBusy"></i>
+  </button>
+  <span class="h2" ng-bind="ctrl.result | json"></span>
+</div>
+
+<h3>Making It Modular</h3>
+
+<p>This isn&#39;t exactly earth shattering code I know, but <strong>if you pepper this little snippet of code all
+over the place, it&#39;s going to suck to make changes in the future</strong>. This is a great place to introduce a
+directive to encapsulate our little spinner.</p>
+
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Spinner</span><span class="p">(){</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;i class=&quot;fa fa-cog fa-spin ng-hide&quot; ng-show=&quot;show&quot;&gt;&lt;/i&gt;&#39;</span><span class="p">,</span>
+    <span class="nx">scope</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">show</span><span class="o">:</span> <span class="s1">&#39;=&#39;</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;spinner&#39;</span><span class="p">,</span> <span class="nx">Spinner</span><span class="p">);</span>
+</code></pre></div>
+<p>That&#39;s about as simple as we can possible make this thing. It doesn&#39;t even need a link function because we
+are using <code>isolate scope</code> to pull in our property to use with <code>ng-show</code>.</p>
+
+<p><strong>Using this in code becomes pretty trivial:</strong></p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="c">&lt;!-- so easy! --&gt;</span>
+<span class="nt">&lt;spinner</span> <span class="na">ng-show=</span><span class="s">&quot;ctrl.isBusy&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+<p>And of course here is our live example using the directive this time... <em>view source if you don&#39;t believe me.</em></p>
+
+<div class="example-code" data-example-name="simple-spinner-directive-example">
+  <button type="button"
+    class="btn btn-lg btn-primary"
+    ng-click="isBusy = !isBusy">Toggle Spinner
+  </button>
+  <span class="h2"><spinner show="isBusy" /></span>
+</div>
+
+<h3>Making It Useful</h3>
+
+<p>This simple little spinner might be good for a demo, but <strong>what happens if your call is really fast? Say less than 200ms?</strong></p>
+
+<p>See for yourself...</p>
+
+<div class="example-code" data-example-name="fast-spinner-example" ng-controller="simpleBooleanController as ctrl">
+  <button type="button"
+    class="btn btn-lg btn-primary"
+    ng-click="ctrl.makeCall(100)"
+    ng-disabled="ctrl.isBusy">Fast Call <spinner show="ctrl.isBusy" />
+  </button>
+  <span class="h2" ng-bind="ctrl.result | json"></span>
+</div>
+
+<p>That little blip is pretty annoying. <strong>A real production spinner should take into account some sort of delay</strong>, and preferably
+this would be something we could configure right in the directive.</p>
+
+<p>Modifying our existing directive to account for a delay is certainly more code, but also not terribly complicated. All we
+need to do is <code>$watch</code> for changes to the boolean, and then take advantage of Angular&#39;s built in <code>$timeout</code> service to
+ensure we honor the delay time. If the value flips from <code>true</code> to <code>false</code> before the timer kicks in, we simply cancel it.</p>
+
+<p><strong>Putting this all together, here is what our modified spinner directive ends up looking like:</strong></p>
+
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">SpinnerDirective</span><span class="p">(</span><span class="nx">$timeout</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;i class=&quot;fa fa-cog fa-spin&quot;&gt;&lt;/i&gt;&#39;</span><span class="p">,</span>
+    <span class="nx">scope</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">show</span><span class="o">:</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span>
+      <span class="nx">delay</span><span class="o">:</span> <span class="s1">&#39;@&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">showTimer</span><span class="p">;</span>
+
+      <span class="c1">//This is where all the magic happens!</span>
+      <span class="c1">// Whenever the scope variable updates we simply</span>
+      <span class="c1">// show if it evaluates to &#39;true&#39; and hide if &#39;false&#39;</span>
+      <span class="nx">scope</span><span class="p">.</span><span class="nx">$watch</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newVal</span><span class="p">){</span>
+        <span class="nx">newVal</span> <span class="o">?</span> <span class="nx">showSpinner</span><span class="p">()</span> <span class="o">:</span> <span class="nx">hideSpinner</span><span class="p">();</span>
+      <span class="p">});</span>
+
+      <span class="kd">function</span> <span class="nx">showSpinner</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//If showing is already in progress just wait</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">showTimer</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+        <span class="c1">//Set up a timeout based on our configured delay to show</span>
+        <span class="c1">// the element (our spinner)</span>
+        <span class="nx">showTimer</span> <span class="o">=</span> <span class="nx">$timeout</span><span class="p">(</span><span class="nx">showElement</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="kc">true</span><span class="p">),</span> <span class="nx">getDelay</span><span class="p">());</span>
+      <span class="p">}</span>
+
+      <span class="kd">function</span> <span class="nx">hideSpinner</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//This is important. If the timer is in progress</span>
+        <span class="c1">// we need to cancel it to ensure everything stays</span>
+        <span class="c1">// in sync.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">showTimer</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$timeout</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="nx">showTimer</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nx">showTimer</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+        <span class="nx">showElement</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="kd">function</span> <span class="nx">showElement</span><span class="p">(</span><span class="nx">show</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">show</span> <span class="o">?</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">css</span><span class="p">({</span><span class="nx">display</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">})</span> <span class="o">:</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">css</span><span class="p">({</span><span class="nx">display</span><span class="o">:</span><span class="s1">&#39;none&#39;</span><span class="p">});</span>
+      <span class="p">}</span>
+
+      <span class="kd">function</span> <span class="nx">getDelay</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">delay</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">scope</span><span class="p">.</span><span class="nx">delay</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nb">isNaN</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span> <span class="o">?</span> <span class="mi">200</span> <span class="o">:</span> <span class="nx">delay</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And of course, a live example of <strong>using the directive with both fast and slow calls.</strong></p>
+
+<div class="example-code" data-example-name="final-example" ng-controller="simpleBooleanController as ctrl">
+  <button type="button"
+    class="btn btn-lg btn-primary"
+    ng-click="ctrl.makeCall(2000)"
+    ng-disabled="ctrl.isBusy">Slow Call <spinner show="ctrl.isBusy" />
+  </button>
+  <button type="button"
+      class="btn btn-lg btn-danger"
+      ng-click="ctrl.makeCall(100)"
+      ng-disabled="ctrl.isBusy">Fast Call <spinner show="ctrl.isBusy" />
+    </button>
+  <span class="h2" ng-bind="ctrl.result | json"></span>
+</div>
+
+<h3>Conclusion</h3>
+
+<p>As you can see, the spinner only shows up after the default <code>200ms</code> and this is something that can be overriden using
+the <code>delay</code> attribute in the directive.</p>
+
+<p>That&#39;s pretty much all there is to it!</p>
+
+<p>Happy coding, and feel free to use this spinner however you want.</p>
+
+ </div>
+ 
+
+<div class="footer">
+    <h4>Share This Post</h4>
+
+    <div class="socials-footer">
+        <a class="btn btn-twitter" href="http://twitter.com/share?text=Another Angular Loading Indicator Directive by @jwcarroll&url=http://www.technofattie.com/2015/01/09/another-angular-loading-indicator.html" rel="nofollow"
+           onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.technofattie.com/2015/01/09/another-angular-loading-indicator.html" rel="nofollow"
+           onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+        </a>
+        <a class="btn btn-google-plus" href="https://plus.google.com/share?url=http://www.technofattie.com/2015/01/09/another-angular-loading-indicator.html" rel="nofollow"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+            <i class="fa fa-google-plus"></i>
+        </a>
+    </div>
+</div>
+</section>
+
+<div class="comments">
+ <div id="disqus_thread"></div>
+ <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'technofattie'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+ <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+        <footer class="footer">
+          <p itemprop="author" itemscope itemtype="http://schema.org/Person">© <a href="/about/" itemprop="url"><span itemprop="name">Josh Carroll</span></a> 2014. All right reserved.</p>
+          <div class="socials-footer">
+          
+            <a class="btn btn-twitter" href="https://twitter.com/jwcarroll" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          
+            <a class="btn btn-linkedin" href="https://www.linkedin.com/in/jwcarroll" title="LinkedIn">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          
+            <a class="btn btn-google-plus" href="https://www.google.com/+JoshCarrollW/posts" title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          
+            <a class="btn btn-github" href="https://github.com/jwcarroll" title="GitHub">
+              <i class="fa fa-github"></i>
+            </a>
+          
+            <a class="btn btn-rss" href="/rss.xml" title="RSS">
+              <i class="fa fa-rss"></i>
+            </a>
+          
+          </div> <!-- /.socials-footer -->
+        </footer> <!-- /footer -->
+
+      </div>
+    </div> <!-- /#primary -->
+
+    <!-- Scripts -->
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/custom.js"></script>
+
+    
+    
+    <script src="/js/angular/angular.min.js"></script>
+    
+    <script src="/js/another-angular-loading-indicator/samples.js"></script>
+    
+    
+
+  </body>
+</html>
