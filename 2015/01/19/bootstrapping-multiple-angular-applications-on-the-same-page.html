@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="description" content="Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming.">
+    <meta name="description" content="If you have ever wanted to run multiple Angular applications in the same page you will understand it simply isn't possible with ng-app. However, there is another way, and this article explains how to do it.">
     
     <meta name="author" content="Josh Carroll">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -18,11 +18,11 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@jwcarroll">
     
-    <meta name="twitter:description" content="Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming.">
+    <meta name="twitter:description" content="If you have ever wanted to run multiple Angular applications in the same page you will understand it simply isn't possible with ng-app. However, there is another way, and this article explains how to do it.">
     
-    <meta name="twitter:title" content="But What If We Run Out of Guids? - Techno Fattie">
+    <meta name="twitter:title" content="Bootstrapping Multiple Angular Applications Automatically Using 'multi-app' - Techno Fattie">
 
-    <title>But What If We Run Out of Guids? - Techno Fattie</title>
+    <title>Bootstrapping Multiple Angular Applications Automatically Using 'multi-app' - Techno Fattie</title>
 
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C400italic%2C700" rel="stylesheet">
@@ -240,7 +240,11 @@
             <h4>You Might Also Like:</h4>
             
             <h5>
-               <a href="/2014/02/11/slaying-the-dragons-of-self-defeat.html">Slaying The Dragons of Self Defeat</a>
+               <a href="/2014/03/21/five-guidelines-for-avoiding-scope-soup-in-angular.html">5 Guidelines For Avoiding Scope Soup in Angular</a>
+            </h5>
+            
+            <h5>
+               <a href="/2015/01/09/another-angular-loading-indicator.html">Another Angular Loading Indicator Directive</a>
             </h5>
             
             <h5>
@@ -248,15 +252,11 @@
             </h5>
             
             <h5>
+               <a href="/2014/02/11/slaying-the-dragons-of-self-defeat.html">Slaying The Dragons of Self Defeat</a>
+            </h5>
+            
+            <h5>
                <a href="/2014/09/03/the-best-javascript-interview-question.html">The Best JavaScript Interview Question</a>
-            </h5>
-            
-            <h5>
-               <a href="/2014/03/21/five-guidelines-for-avoiding-scope-soup-in-angular.html">5 Guidelines For Avoiding Scope Soup in Angular</a>
-            </h5>
-            
-            <h5>
-               <a href="/2011/09/23/solving-ayende%27s-tax-woes.html">Solving Ayende's Tax Woes</a>
             </h5>
             
         </div>
@@ -286,75 +286,103 @@
 <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
  <header class="entry-header">
    <img class="entry-avatar" alt="Josh Carroll" height="52" width="52" src="http://www.gravatar.com/avatar/213ff080fa03648f0b71e4f4658a8046.png?s=52">
-   <h1 class="entry-title"><a href="/2013/04/15/but-what-if-we-run-out-of-guids.html" itemprop="url"><span itemprop="name">But What If We Run Out of Guids?</span></a></h1>
+   <h1 class="entry-title"><a href="/2015/01/19/bootstrapping-multiple-angular-applications-on-the-same-page.html" itemprop="url"><span itemprop="name">Bootstrapping Multiple Angular Applications Automatically Using 'multi-app'</span></a></h1>
    <p class="entry-meta">
-     Posted on <a class="entry-date" href="/archives/#april-2013"><time itemprop="dateCreated" datetime="2013-04-15T00:00:00-04:00">15 April 2013</time></a> |
+     Posted on <a class="entry-date" href="/archives/#january-2015"><time itemprop="dateCreated" datetime="2015-01-19T00:00:00-05:00">19 January 2015</time></a> |
      By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" class="entry-author" href="/about/"><span itemprop="name">Josh Carroll</span></a></span>
      
      | Tags 
      
-     <a href="/tags/humor.html" class="btn btn-default btn-xs"><span itemprop="keywords">humor</span></a>
+     <a href="/tags/angular.html" class="btn btn-default btn-xs"><span itemprop="keywords">angular</span></a>
      
-     <a href="/tags/programming.html" class="btn btn-default btn-xs"><span itemprop="keywords">programming</span></a>
+     <a href="/tags/javascript.html" class="btn btn-default btn-xs"><span itemprop="keywords">javascript</span></a>
+     
+     <a href="/tags/directives.html" class="btn btn-default btn-xs"><span itemprop="keywords">directives</span></a>
+     
+     <a href="/tags/angular-modules.html" class="btn btn-default btn-xs"><span itemprop="keywords">angular-modules</span></a>
+     
+     <a href="/tags/bootstrapping.html" class="btn btn-default btn-xs"><span itemprop="keywords">bootstrapping</span></a>
      
      
    </p>
  </header>
  <div class="entry-description" itemprop="articleBody">
-   <p>There was a bit of programmer humor happening on Twitter today concerning GUIDs.</p>
+   <h3>I Have Two Angular Applications... One For Each of You!</h3>
 
-<div class='embed tweet'><blockquote class="twitter-tweet"><p><a href="https://twitter.com/reverentgeek">@reverentgeek</a> <a href="https://twitter.com/digitalBush">@digitalBush</a> Guys, will you please STOP generating GUIDs for jokes? You&#39;re just wasting them! STOP WASTING GUIDS <a href="https://twitter.com/search?q=%23saveTheGuids&amp;src=hash">#saveTheGuids</a></p>&mdash; Robert Simmons (@robertdsimmons) <a href="https://twitter.com/robertdsimmons/statuses/323869157642883074">April 15, 2013</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+<p>AngularJS is amazingly flexible, so it usually comes as a surprise to people when they find out that <strong>you can&#39;t use
+<code>ng-app</code> twice on the same page.</strong> Granted, this isn&#39;t something you <em>really</em> need too much, but most of us
+have thought of a reason or two that it might be handy.</p>
 
-<p>Sadly, this is only funny because every programmer has inevitably had a conversation that went something like this:</p>
+<p>Now, it&#39;s not like this is impossible, but it does require manually bootstrapping the application using
+<a href="https://docs.angularjs.org/api/ng/function/angular.bootstrap">angular.bootstrap</a>.</p>
 
-<blockquote>
-<p><strong>Boss:</strong> &quot;We need to make sure these entries are unique.&quot;</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myTargetElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;my-target&#39;</span><span class="p">);</span>
 
-<p><strong>Dev:</strong> &nbsp;&quot;No problem, we can use a GUID.&quot;</p>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">bootstrap</span><span class="p">(</span><span class="nx">myTargetElement</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;some-module&#39;</span><span class="p">]);</span>
+</code></pre></div>
 
-<p><strong>Boss:</strong> &quot;But we are going to be creating millions and millions of these things. What happens if there is a collison?&quot;</p>
+<p>That&#39;s not <em>terrible</em>, but <a href="/2015/01/09/another-angular-loading-indicator.html">on my previous blog post about a simple loading indicator</a>,
+I really <strong>needed an easy way to automatically make this happen</strong>. Ideally it would work just like <code>ng-app</code> did, so I
+threw together some code to do this for me.</p>
 
-<p><strong>Dev:</strong> &nbsp;&quot;I don&#39;t think it will be a problem.&quot;</p>
+<p>Turns out, it was ridiculously simple:</p>
 
-<p><strong>Boss:</strong> &quot;But these are going to be used on the web. What if somebody guesses a valid GUID?&quot;</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="c1">//Find all elements with an attribute of &#39;multi-app&#39;</span>
+<span class="kd">var</span> <span class="nx">allMultiElements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;*[multi-app]&#39;</span><span class="p">);</span>
 
-<p><strong>Dev:</strong> &quot;They won&#39;t be able to guess, and besides, we will be checking security anyway.&quot;</p>
+<span class="c1">//Bootstrap each element using the value of the attribute</span>
+<span class="c1">// as the module name</span>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">allMultiElements</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">appName</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nx">elem</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;multi-app&#39;</span><span class="p">);</span>
 
-<p><strong>Boss:</strong> &quot;I&#39;m just not convinced, I think we should...&quot;At this point, the boss (or other offending party) usually comes up with some&nbsp;cockamamie idea that takes way too much time to implement, and is not guaranteed to be unique.</p>
-</blockquote>
+    <span class="nx">angular</span><span class="p">.</span><span class="nx">bootstrap</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="p">[</span><span class="nx">appName</span><span class="p">]);</span>
+<span class="p">});</span>
+</code></pre></div>
 
-<h3>There&#39;s Not That Many Stars Anyway</h3>
+<h3>TADA!</h3>
 
-<p>But I recognize that phrases like &quot;mathematically impossible&quot;, &quot;2<sup>122</sup>&quot;, and &quot;a trillion times more than the number of stars in the uinverse&quot; are abstract and difficult concepts for business minded folks. So, for the non-anylitical types. I&#39;m going to let you in on the joke, and attempt to show you why we programmers just stare at you blankly when you reject mathematically sound advice.</p>
+<p>I use the native <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document.querySelectorAll"><code>querySelectorAll</code></a> to grab
+all elements that have an attribute of <code>multi-app</code>. Then, since I already know I am using AngularJS, I can simply lean
+on it&#39;s built in utility function <code>forEach</code> to loop over those elements and bootstrap each one using the attribute value
+as the module name.</p>
 
-<p>A GUID is like a really, really big number. How big? 2<sup>122</sup>&nbsp;or 5.3×10<sup>36</sup></p>
+<p>In order to put a bow on this, and make the whole thing automatic, <strong>I wrap the above code into a function, and then call
+it whenever the document is ready.</strong></p>
 
-<h3>Umm... So What?</h3>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
 
-<p>So what does that actually mean? Let&#39;s pretend for a minute we had every single person on the earth generate a GUID every second for one year.
-<span style="font-size: large;">
-</span><span style="font-size: large;">7,000,000,000 ppl * 86400 seconds in a day * 365 days in a year</span></p>
+    <span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nb">document</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="nx">bootstrapAllModules</span><span class="p">);</span>
 
-<p>Exactly how many GUIDs is that? 
-<span style="font-size: large;">
-</span><span style="font-size: large;"><strong>220,752,000,000,000,000</strong></span></p>
+    <span class="kd">function</span> <span class="nx">bootstrapAllModules</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">allMultiElements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;*[multi-app]&#39;</span><span class="p">);</span>
 
-<h3>It Might Take A Day or Two</h3>
+        <span class="nx">angular</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">allMultiElements</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">){</span>
+            <span class="kd">var</span> <span class="nx">appName</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nx">elem</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;multi-app&#39;</span><span class="p">);</span>
 
-<p>Ok, that&#39;s pretty impressive, but what percentage of the total number of possible GUIDs is that?</p>
+            <span class="nx">angular</span><span class="p">.</span><span class="nx">bootstrap</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="p">[</span><span class="nx">appName</span><span class="p">]);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}());</span>
+</code></pre></div>
 
-<p><span style="font-size: large;"><strong>~0.000000000000000000042%</strong></span></p>
+<p>Now you can automatically bootstrap multiple applications into the DOM like this:</p>
 
-<p>That doesn&#39;t look too good on a&nbsp;PowerPoint&nbsp;slide though, so how long would it take us to get to just 1% of all possible GUIDs?</p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">multi-app=</span><span class="s">&quot;app-one&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">multi-app=</span><span class="s">&quot;app-two&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">multi-app=</span><span class="s">&quot;app-three&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div>
 
-<p><strong><span style="font-size: large;">2,400,884,200,000,000,000 Years</span></strong></p>
+<p>And... the entire thing is <strong>only 12 lines of code!</strong></p>
 
-<h3>I Have Underwear That Old!</h3>
+<p>For those of you who are too lazy to <kbd>CTRL + C, CTRL + V</kbd> I put <a href="https://github.com/jwcarroll/angular-multi-app">the whole thing up on GitHub</a>.</p>
 
-<p>Great news! It will only take us a measly 2.4&nbsp;Quintilian years to completely exhaust&nbsp;1% of all possible GUIDs if every person on earth spends every second of every day generating them!</p>
+<p>There is <strong>even a bower package</strong>, which is hilariously comical to me, but nonetheless you are free to:</p>
 
-<p>If you are a developer and you are faced with this conversation in the future, then just pull up this article and show it to the mathematically challenged.</p>
+<p><kbd>bower install angular-multi-app</kbd></p>
+
+<p>Have fun, and don&#39;t shoot yourself in the eye with this thing!</p>
 
  </div>
  
@@ -363,15 +391,15 @@
     <h4>Share This Post</h4>
 
     <div class="socials-footer">
-        <a class="btn btn-twitter" href="http://twitter.com/share?text=But What If We Run Out of Guids? by @jwcarroll&url=http://www.technofattie.com/2013/04/15/but-what-if-we-run-out-of-guids.html" rel="nofollow"
+        <a class="btn btn-twitter" href="http://twitter.com/share?text=Bootstrapping Multiple Angular Applications Automatically Using 'multi-app' by @jwcarroll&url=http://www.technofattie.com/2015/01/19/bootstrapping-multiple-angular-applications-on-the-same-page.html" rel="nofollow"
            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
             <i class="fa fa-twitter"></i>
         </a>
-        <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.technofattie.com/2013/04/15/but-what-if-we-run-out-of-guids.html" rel="nofollow"
+        <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.technofattie.com/2015/01/19/bootstrapping-multiple-angular-applications-on-the-same-page.html" rel="nofollow"
            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
             <i class="fa fa-facebook"></i>
         </a>
-        <a class="btn btn-google-plus" href="https://plus.google.com/share?url=http://www.technofattie.com/2013/04/15/but-what-if-we-run-out-of-guids.html" rel="nofollow"
+        <a class="btn btn-google-plus" href="https://plus.google.com/share?url=http://www.technofattie.com/2015/01/19/bootstrapping-multiple-angular-applications-on-the-same-page.html" rel="nofollow"
            onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
             <i class="fa fa-google-plus"></i>
         </a>

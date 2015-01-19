@@ -129,6 +129,12 @@
         <lastmod>2015-01-10T02:07:32-05:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://www.technofattie.com/2015/01/19/bootstrapping-multiple-angular-applications-on-the-same-page.html
+        </loc>
+        <lastmod>2015-01-18T22:23:39-05:00</lastmod>
+    </url>
+    <url>
         <loc>http://www.technofattie.com/about/</loc>
         <lastmod>2014-09-03T22:52:58-04:00</lastmod>
     </url>
@@ -150,6 +156,6 @@
     </url>
     <url>
         <loc>http://www.technofattie.com/</loc>
-        <lastmod>2015-01-10T02:07:32-05:00</lastmod>
+        <lastmod>2015-01-18T22:23:39-05:00</lastmod>
     </url>
 </urlset>
