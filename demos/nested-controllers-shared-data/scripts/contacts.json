@@ -1,0 +1,37 @@
+[
+  {
+    "firstName": "Josh",
+    "lastName": "Carroll",
+    "twitter": {
+      "name": "jwcarroll"
+    }
+  },
+  {
+    "firstName": "Dan",
+    "lastName": "Wahlin",
+    "twitter": {
+      "name": "DanWahlin"
+    }
+  },
+  {
+    "firstName": "John",
+    "lastName": "Papa",
+    "twitter": {
+      "name": "John_Papa"
+    }
+  },
+  {
+    "firstName": "Jeremy",
+    "lastName": "Likness",
+    "twitter": {
+      "name": "jeremylikness"
+    }
+  },
+  {
+    "firstName": "Todd",
+    "lastName": "Motto",
+    "twitter": {
+      "name": "toddmotto"
+    }
+  }
+]

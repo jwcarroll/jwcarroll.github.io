@@ -1,0 +1,26 @@
+<div class="col-sm-4">
+    <h3 ng-if="!ctrl.editMode">{{ctrl.contact.firstName}} {{ctrl.contact.lastName}} <small><a href ng-click="ctrl.enableEditMode()">edit</a></small></h3>
+    <form name="ctrl.form" ng-if="ctrl.editMode">
+        <div class="form-group">
+            <label>First Name</label>
+            <input class="form-control" type="text" ng-model="ctrl.contact.firstName" required />
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input class="form-control" type="text" ng-model="ctrl.contact.lastName" required />
+        </div>
+        <div class="form-group">
+            <label>Twitter</label>
+            <input class="form-control" type="text" ng-model="ctrl.contact.twitter.name" ng-model-options="{updateOn:'blur'}" required />
+        </div>
+        <div class="form-group">
+            <label>Tweet Limit</label>
+            <input class="form-control" type="number" ng-model="ctrl.contact.tweetLimit" min="1" max="20" ng-model-options="{debounce:200}" required />
+        </div>
+        <button type="submit" class="btn btn-primary" ng-click="ctrl.saveChanges($event)">Save</button>
+        <button type="button" class="btn btn-danger" ng-click="ctrl.cancelChanges($event)">Cancel</button>
+    </form>
+</div>
+<div class="col-sm-8">
+    <twitter-timeline twitter-name="{{ctrl.contact.twitter.name}}" tweet-limit="{{ctrl.contact.tweetLimit}}"></twitter-timeline>
+</div>

@@ -1,0 +1,31 @@
+.contact {
+    position: relative;
+    border-radius: 5px;
+    border: solid 3px transparent;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.contact:hover {
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.contact-selected {
+    border-color: darkgreen;
+}
+
+.contact-selected span {
+    display: block;
+    position: absolute;
+    top:0;
+    right:0;
+    border: solid 3px darkgreen;
+    border-right: none;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    padding: 5px;
+    background-color: darkgreen;
+    color: white;
+}

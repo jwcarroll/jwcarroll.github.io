@@ -9,7 +9,16 @@
     <link>http://www.technofattie.com</link>
     <description>Josh Carroll's Blog about Programming, Techno and Fatties... ok mostly just programming.</description>
     <copyright>2014 Josh Carroll All rights reserved</copyright>
-    <pubDate>Mon, 19 Jan 2015 00:00:00 -0500</pubDate>
+    <pubDate>Mon, 02 Mar 2015 00:00:00 -0500</pubDate>
+    <item>
+      <title>Nested Controllers And Shared Data in Angular</title>
+      <link>http://www.technofattie.com/2015/03/02/nested-controllers-and-shared-data-in-angular.html</link>
+      <description>&lt;h2&gt;Controllers Should Be Classes&lt;/h2&gt;
+</description>
+      <pubDate>Mon, 02 Mar 2015 00:00:00 -0500</pubDate>
+      <guid>http://www.technofattie.com/2015/03/02/nested-controllers-and-shared-data-in-angular.html</guid>
+      <dc:date>2015-03-02T00:00:00-05:00</dc:date>
+    </item>
     <item>
       <title>Bootstrapping Multiple Angular Applications Automatically Using 'multi-app'</title>
       <link>http://www.technofattie.com/2015/01/19/bootstrapping-multiple-angular-applications-on-the-same-page.html</link>
@@ -276,6 +285,6 @@ was simple, straightforward and to the point.&lt;/p&gt;
       <guid>http://www.technofattie.com/2007/12/22/mandelbrot-bitmap.html</guid>
       <dc:date>2007-12-22T00:00:00-05:00</dc:date>
     </item>
-    <dc:date>2015-01-19T00:00:00-05:00</dc:date>
+    <dc:date>2015-03-02T00:00:00-05:00</dc:date>
   </channel>
 </rss>
